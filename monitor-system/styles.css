@@ -1,0 +1,518 @@
+/* Reset y configuración base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Variables de colores AeroNexus */
+:root {
+    --primary-blue: #0356BF;
+    --accent-cyan: #38D9E7;
+    --neutral-gray: #BFBFC0;
+    --dark-bg: #000;
+    --text-white: #fff;
+}
+
+/* Contenedor principal fullscreen */
+#monitor-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(135deg, #0a0a1a 0%, var(--primary-blue) 100%);
+}
+
+/* Header */
+#monitor-header {
+    background: linear-gradient(90deg, var(--primary-blue) 0%, #0a0a1a 100%);
+    padding: 20px 40px;
+    border-bottom: 3px solid var(--accent-cyan);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+}
+
+/* Logo en el header */
+.header-logo {
+    display: flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.logo-image {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+#monitor-header h1 {
+    font-size: 48px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+#header-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 24px;
+}
+
+#current-time {
+    font-weight: bold;
+    color: var(--accent-cyan);
+}
+
+#last-update {
+    font-size: 18px;
+    color: #cccccc;
+    margin-top: 5px;
+}
+
+.logo-image{
+    height: auto;
+    width: 90px;
+    object-fit: contain;
+}
+
+/* Contenido principal */
+#monitor-content {
+    flex: 1;
+    padding: 20px 40px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Mensaje de emergencia */
+#emergency-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, #ff0000, #ff4444);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: emergency-pulse 1s infinite alternate;
+}
+
+.emergency-content {
+    text-align: center;
+    padding: 40px;
+    background: rgba(0,0,0,0.9);
+    border-radius: 20px;
+    border: 5px solid #fff;
+}
+
+.emergency-content h2 {
+    font-size: 72px;
+    margin-bottom: 20px;
+    color: #ff0000;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+}
+
+#emergency-text {
+    font-size: 36px;
+    line-height: 1.4;
+    color: #fff;
+}
+
+@keyframes emergency-pulse {
+    0% { background: linear-gradient(45deg, #ff0000, #ff4444); }
+    100% { background: linear-gradient(45deg, #ff4444, #ff0000); }
+}
+
+/* Contenedor de vuelos */
+#flights-container {
+    height: 100%;
+    position: relative;
+}
+
+/* Loading */
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.spinner {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #333;
+    border-top: 8px solid #00d4ff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading p {
+    font-size: 28px;
+    color: #cccccc;
+}
+
+/* No flights message */
+.no-flights {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+}
+
+.no-flights h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #ffaa00;
+}
+
+.no-flights p {
+    font-size: 24px;
+    color: #cccccc;
+}
+
+/* Lista de vuelos */
+.flights-list {
+    height: 100%;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+.flights-list::-webkit-scrollbar {
+    width: 12px;
+}
+
+.flights-list::-webkit-scrollbar-track {
+    background: #1a1a2e;
+}
+
+.flights-list::-webkit-scrollbar-thumb {
+    background: var(--accent-cyan);
+    border-radius: 6px;
+}
+
+.flight-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid transparent;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.flight-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.2);
+}
+
+/* Estados de vuelo */
+.flight-item.status-programado {
+    border-color: #00d4ff;
+    background: rgba(0, 212, 255, 0.1);
+}
+
+.flight-item.status-embarque {
+    border-color: #ffaa00;
+    background: rgba(255, 170, 0, 0.1);
+    animation: embarque-pulse 2s infinite;
+}
+
+.flight-item.status-ultima-llamada {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+    animation: ultima-llamada-pulse 1s infinite;
+}
+
+.flight-item.status-cerrado {
+    border-color: #666;
+    background: rgba(102, 102, 102, 0.1);
+}
+
+.flight-item.status-retrasado {
+    border-color: #ff6b35;
+    background: rgba(255, 107, 53, 0.1);
+}
+
+.flight-item.status-cancelado {
+    border-color: #8b0000;
+    background: rgba(139, 0, 0, 0.1);
+}
+
+@keyframes embarque-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 170, 0, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(255, 170, 0, 0.6); }
+}
+
+@keyframes ultima-llamada-pulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(255, 68, 68, 0.3); }
+    50% { box-shadow: 0 0 30px rgba(255, 68, 68, 0.6); }
+}
+
+/* Información del vuelo */
+.flight-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.flight-number {
+    font-size: 42px;
+    font-weight: bold;
+    margin-right: 30px;
+    color: #00d4ff;
+    min-width: 150px;
+}
+
+.airline-dest {
+    flex: 1;
+    margin-right: 30px;
+}
+
+.airline {
+    font-size: 28px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.destination {
+    font-size: 24px;
+    color: #cccccc;
+}
+
+.time-gate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 30px;
+    min-width: 120px;
+}
+
+.time-label {
+    font-size: 18px;
+    color: #cccccc;
+    margin-bottom: 5px;
+}
+
+.time-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.gate-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+}
+
+.gate-label {
+    font-size: 18px;
+    color: #cccccc;
+    margin-bottom: 5px;
+}
+
+.gate-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #00d4ff;
+    background: rgba(0, 212, 255, 0.2);
+    padding: 8px 15px;
+    border-radius: 8px;
+}
+
+/* Estado del vuelo */
+.flight-status {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 200px;
+}
+
+.status-badge {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.status-badge.status-programado {
+    background: #00d4ff;
+    color: #000;
+}
+
+.status-badge.status-embarque {
+    background: #ffaa00;
+    color: #000;
+}
+
+.status-badge.status-ultima-llamada {
+    background: #ff4444;
+    color: #fff;
+}
+
+.status-badge.status-cerrado {
+    background: #666;
+    color: #fff;
+}
+
+.status-badge.status-retrasado {
+    background: #ff6b35;
+    color: #fff;
+}
+
+.status-badge.status-cancelado {
+    background: #8b0000;
+    color: #fff;
+}
+
+.last-update {
+    font-size: 16px;
+    color: #cccccc;
+}
+
+/* Footer */
+#monitor-footer {
+    background: linear-gradient(90deg, #1a1a2e 0%, #0f3460 100%);
+    padding: 15px 40px;
+    border-top: 2px solid #e94560;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-info {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 18px;
+    color: #cccccc;
+    align-items: center;
+}
+
+/* Logo en el footer */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: var(--accent-cyan);
+}
+
+.footer-icon {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+}
+
+#footer-time {
+    color: var(--accent-cyan);
+    font-weight: bold;
+}
+
+/* Utilidades */
+.hidden {
+    display: none !important;
+}
+
+/* Responsive para diferentes tamaños de pantalla */
+@media (max-width: 1200px) {
+    #monitor-header h1 {
+        font-size: 36px;
+    }
+
+    .flight-number {
+        font-size: 36px;
+        min-width: 120px;
+    }
+
+    .airline {
+        font-size: 24px;
+    }
+
+    .destination {
+        font-size: 20px;
+    }
+
+    .time-value, .gate-value {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 768px) {
+    #monitor-header {
+        padding: 15px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #monitor-header h1 {
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    #header-info {
+        align-items: flex-start;
+        font-size: 20px;
+    }
+
+    #monitor-content {
+        padding: 15px 20px;
+    }
+
+    .flight-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px;
+    }
+
+    .flight-info {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .time-gate, .gate-info {
+        flex-direction: row;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .time-gate {
+        margin-bottom: 10px;
+    }
+
+    .flight-status {
+        width: 100%;
+        align-items: center;
+    }
+}

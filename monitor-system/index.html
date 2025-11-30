@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AeroNexus - Monitores Aeroportuarios</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="../assets/favicon.png">
+</head>
+<body>
+    <div id="monitor-container">
+        <header id="monitor-header">
+            <div class="header-logo">
+                <img src="../assets/favicon.png" alt="AeroNexus Logo" class="logo-image">
+            </div>
+            <h1 id="header-title">AEROPUERTO INTERNACIONAL - SALIDAS</h1>
+            <div id="header-info">
+                <span id="current-time">--:--</span>
+                <span id="last-update">Última actualización: --:--</span>
+            </div>
+        </header>
+
+        <main id="monitor-content">
+            <div id="emergency-message" class="hidden">
+                <div class="emergency-content">
+                    <h2>MENSAJE DE EMERGENCIA</h2>
+                    <p id="emergency-text"></p>
+                </div>
+            </div>
+
+            <div id="flights-container">
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Cargando información de vuelos...</p>
+                </div>
+
+                <div id="no-flights" class="no-flights hidden">
+                    <h2>No hay vuelos programados</h2>
+                    <p>Por favor, espere la próxima actualización</p>
+                </div>
+
+                <div id="flights-list" class="flights-list hidden">
+                    <!-- Los vuelos se cargarán aquí dinámicamente -->
+                </div>
+            </div>
+        </main>
+
+        <footer id="monitor-footer">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <img src="../assets/favicon.png" alt="AeroNexus Icon" class="footer-icon">
+                    <span>AeroNexus</span>
+                </div>
+                <span>&copy; 2025 AeroNexus - Todos los derechos reservados</span>
+                <span id="footer-time">--:--</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
