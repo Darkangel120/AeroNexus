@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in Online - AeroNexus</title>
+    <link rel="stylesheet" href="../assets/css/dashboard-styles.css">
+    <link rel="icon" href="../../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header id="dashboard-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Logo" class="logo-image">
+                <span class="logo-text">AeroNexus</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="flight-search.html">Buscar Vuelos</a></li>
+                    <li><a href="bookings.html">Mis Reservas</a></li>
+                    <li><a href="profile.html">Perfil</a></li>
+                </ul>
+                <ul>
+                    <li class="notifications">
+                        <i class="fas fa-bell" id="notification-icon"></i>
+                        <span class="notification-badge" id="notification-count">0</span>
+                        <div class="notification-dropdown" id="notification-dropdown">
+                            <!-- Notifications will be populated here -->
+                        </div>
+                    </li>
+                    <li class="user-menu">
+                        <span id="user-name">Usuario</span>
+                        <div class="dropdown">
+                            <a href="#" id="logout-btn">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="checkin">
+            <div class="container">
+                <h2>Check-in Online</h2>
+
+                <!-- Step Indicator -->
+                <div class="step-indicator">
+                    <div class="step active" id="step-1-indicator">1</div>
+                    <div class="step-line" id="line-1"></div>
+                    <div class="step" id="step-2-indicator">2</div>
+                    <div class="step-line" id="line-2"></div>
+                    <div class="step" id="step-3-indicator">3</div>
+                    <div class="step-line" id="line-3"></div>
+                    <div class="step" id="step-4-indicator">4</div>
+                </div>
+
+                <div class="step-titles">
+                    <span class="active">Buscar Reserva</span>
+                    <span>Seleccionar Asiento</span>
+                    <span>Confirmar Datos</span>
+                    <span>Completado</span>
+                </div>
+
+                <!-- Step 1: Booking Search -->
+                <div class="checkin-step" id="step-1">
+                    <div class="checkin-form">
+                        <h3>Buscar tu Reserva</h3>
+                        <form id="booking-search-form">
+                            <div class="form-group">
+                                <label for="booking-code">Código de Reserva</label>
+                                <input type="text" id="booking-code" name="booking-code" required placeholder="Ej: AN123456">
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Apellido</label>
+                                <input type="text" id="last-name" name="last-name" required placeholder="Apellido del pasajero principal">
+                            </div>
+                            <button type="submit" class="btn-primary">
+                                <i class="fas fa-search"></i> Buscar Reserva
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Step 2: Flight Details -->
+                <div class="checkin-step" id="step-2" style="display: none;">
+                    <div class="flight-details-card">
+                        <div class="flight-info">
+                            <div class="flight-route">
+                                <span class="origin">MEX</span>
+                                <i class="fas fa-plane"></i>
+                                <span class="destination">CDG</span>
+                            </div>
+                            <div class="flight-details">
+                                <p><strong>Vuelo:</strong> AN123</p>
+                                <p><strong>Fecha:</strong> 15 Dic 2024</p>
+                                <p><strong>Hora:</strong> 14:30 - 08:45 (+1 día)</p>
+                                <p><strong>Pasajeros:</strong> 1</p>
+                            </div>
+                        </div>
+                        <div class="flight-status">
+                            <span class="status on-time">A Tiempo</span>
+                            <button class="btn-primary" onclick="showStep(3)">Iniciar Check-in</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Seat Selection -->
+                <div class="checkin-step" id="step-3" style="display: none;">
+                    <div class="seat-selection">
+                        <h3>Seleccionar Asiento</h3>
+                        <div class="seat-map">
+                            <div class="seat-row">
+                                <span class="row-label">3</span>
+                                <div class="seat available" data-seat="3A">3A</div>
+                                <div class="seat available" data-seat="3B">3B</div>
+                                <div class="aisle"></div>
+                                <div class="seat available" data-seat="3C">3C</div>
+                                <div class="seat occupied" data-seat="3D">3D</div>
+                            </div>
+                            <div class="seat-row">
+                                <span class="row-label">4</span>
+                                <div class="seat available" data-seat="4A">4A</div>
+                                <div class="seat available" data-seat="4B">4B</div>
+                                <div class="aisle"></div>
+                                <div class="seat available" data-seat="4C">4C</div>
+                                <div class="seat available" data-seat="4D">4D</div>
+                            </div>
+                            <div class="seat-row">
+                                <span class="row-label">5</span>
+                                <div class="seat available" data-seat="5A">5A</div>
+                                <div class="seat available" data-seat="5B">5B</div>
+                                <div class="aisle"></div>
+                                <div class="seat available" data-seat="5C">5C</div>
+                                <div class="seat available" data-seat="5D">5D</div>
+                            </div>
+                        </div>
+
+                        <div class="passenger-info">
+                            <div class="passenger-card">
+                                <h4>Pasajero</h4>
+                                <p><strong>Nombre:</strong> Juan García</p>
+                                <p><strong>Asiento seleccionado:</strong> <span id="selected-seat">Ninguno</span></p>
+                            </div>
+                        </div>
+
+                        <button type="button" class="btn-primary" id="continue-btn" disabled>Continuar</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Confirmation -->
+                <div class="checkin-step" id="step-4" style="display: none;">
+                    <div class="confirmation-details">
+                        <div class="confirmation-card">
+                            <h3>Confirmar Datos del Check-in</h3>
+                            <div class="flight-info">
+                                <p><strong>Vuelo:</strong> AN123</p>
+                                <p><strong>Ruta:</strong> MEX - CDG</p>
+                                <p><strong>Fecha:</strong> 15 Dic 2024</p>
+                                <p><strong>Hora:</strong> 14:30</p>
+                            </div>
+                            <div class="passenger-info">
+                                <p><strong>Pasajero:</strong> Juan García</p>
+                                <p><strong>Documento:</strong> Pasaporte MX123456789</p>
+                                <p><strong>Nacionalidad:</strong> Mexicana</p>
+                                <p><strong>Asiento:</strong> <span id="confirmed-seat">Ninguno</span></p>
+                            </div>
+                        </div>
+
+                        <div class="terms-acceptance">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms-checkbox">
+                                Acepto los términos y condiciones del check-in online
+                            </label>
+                        </div>
+
+                        <button type="button" class="btn-primary" id="confirm-checkin-btn" disabled>Confirmar Check-in</button>
+                    </div>
+                </div>
+
+                <!-- Step 5: Completion -->
+                <div class="checkin-step" id="step-5" style="display: none;">
+                    <div class="completion-message">
+                        <div class="success-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h3>¡Check-in Completado!</h3>
+                        <p>Tu check-in online se ha realizado exitosamente.</p>
+
+                        <div class="boarding-pass">
+                            <div class="boarding-pass-card">
+                                <div class="boarding-info">
+                                    <h4>Pase de Abordar</h4>
+                                    <p><strong>Vuelo:</strong> AN123</p>
+                                    <p><strong>Fecha:</strong> 15 Dic 2024</p>
+                                    <p><strong>Hora:</strong> 14:30</p>
+                                    <p><strong>Asiento:</strong> <span id="boarding-seat">Ninguno</span></p>
+                                    <p><strong>Puerta:</strong> A12</p>
+                                </div>
+                                <div class="boarding-qr">
+                                    <i class="fas fa-qrcode" style="font-size: 4rem; color: var(--primary-blue);"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="boarding-instructions">
+                            <p>Presenta este pase de abordar en el aeropuerto. Recuerda llegar al menos 2 horas antes de tu vuelo internacional.</p>
+                        </div>
+
+                        <button type="button" class="btn-secondary" onclick="window.location.href='dashboard.html'">Volver al Dashboard</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Icon" class="footer-icon">
+                <span>AeroNexus</span>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 AeroNexus - Todos los derechos reservados</p>
+                <p>Aeropuerto Internacional - Tu puerta al mundo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/checkin-script.js"></script>
+</body>
+</html>

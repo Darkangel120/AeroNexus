@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Vuelos - AeroNexus</title>
+    <link rel="stylesheet" href="../assets/css/dashboard-styles.css">
+    <link rel="icon" href="../../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header id="dashboard-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Logo" class="logo-image">
+                <span class="logo-text">AeroNexus</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="bookings.html">Mis Reservas</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                    <li><a href="profile.html">Perfil</a></li>
+                </ul>
+                <ul>
+                    <li class="notifications">
+                        <i class="fas fa-bell" id="notification-icon"></i>
+                        <span class="notification-badge" id="notification-count">0</span>
+                        <div class="notification-dropdown" id="notification-dropdown">
+                            <!-- Notifications will be populated here -->
+                        </div>
+                    </li>
+                    <li class="user-menu">
+                        <span id="user-name">Usuario</span>
+                        <div class="dropdown">
+                            <a href="#" id="logout-btn">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="flight-search">
+            <div class="container">
+                <h2>Buscar Vuelos</h2>
+                <div class="search-form">
+                    <form id="flight-search-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="origin">Origen</label>
+                                <input type="text" id="origin" name="origin" placeholder="Ciudad o aeropuerto" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="destination">Destino</label>
+                                <input type="text" id="destination" name="destination" placeholder="Ciudad o aeropuerto" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="departure-date">Fecha de Salida</label>
+                                <input type="date" id="departure-date" name="departure-date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="return-date">Fecha de Regreso</label>
+                                <input type="date" id="return-date" name="return-date">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="passengers">Pasajeros</label>
+                                <select id="passengers" name="passengers">
+                                    <option value="1">1 Pasajero</option>
+                                    <option value="2">2 Pasajeros</option>
+                                    <option value="3">3 Pasajeros</option>
+                                    <option value="4">4 Pasajeros</option>
+                                    <option value="5">5+ Pasajeros</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="class">Clase</label>
+                                <select id="class" name="class">
+                                    <option value="economy">Económica</option>
+                                    <option value="premium">Premium</option>
+                                    <option value="business">Business</option>
+                                    <option value="first">Primera Clase</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary" id="search-btn">
+                            <i class="fas fa-search"></i> Buscar Vuelos
+                        </button>
+                    </form>
+                </div>
+
+                <div id="search-results" class="search-results" style="display: none;">
+                    <h3>Resultados de Búsqueda</h3>
+                    <div class="flights-container">
+                        <!-- Flight results will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Icon" class="footer-icon">
+                <span>AeroNexus</span>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 AeroNexus - Todos los derechos reservados</p>
+                <p>Aeropuerto Internacional - Tu puerta al mundo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/dashboard-script.js"></script>
+    <script src="../assets/js/flight-search-script.js"></script>
+</body>
+</html>

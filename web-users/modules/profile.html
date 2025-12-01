@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - AeroNexus</title>
+    <link rel="stylesheet" href="../assets/css/dashboard-styles.css">
+    <link rel="icon" href="../../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header id="dashboard-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Logo" class="logo-image">
+                <span class="logo-text">AeroNexus</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="flight-search.html">Buscar Vuelos</a></li>
+                    <li><a href="bookings.html">Mis Reservas</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                </ul>
+                <ul>
+                    <li class="notifications">
+                        <i class="fas fa-bell" id="notification-icon"></i>
+                        <span class="notification-badge" id="notification-count">0</span>
+                        <div class="notification-dropdown" id="notification-dropdown">
+                            <!-- Notifications will be populated here -->
+                        </div>
+                    </li>
+                    <li class="user-menu">
+                        <span id="user-name">Usuario</span>
+                        <div class="dropdown">
+                            <a href="#" id="logout-btn">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="profile">
+            <div class="container">
+                <h2>Mi Perfil</h2>
+
+                <div class="profile-grid">
+                    <!-- Profile Info Section -->
+                    <div class="profile-info-section">
+                        <div class="profile-card">
+                            <div class="profile-header">
+                                <div class="profile-avatar">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="profile-details">
+                                    <h3 id="profile-name">Juan García</h3>
+                                    <p id="profile-email">juan.garcia@email.com</p>
+                                    <span class="member-status">Miembro Gold</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personal Information -->
+                        <div class="profile-card">
+                            <h4>Información Personal</h4>
+                            <form id="personal-info-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="first-name">Nombre</label>
+                                        <input type="text" id="first-name" name="first-name" value="Juan" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last-name">Apellido</label>
+                                        <input type="text" id="last-name" name="last-name" value="García" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="email">Correo Electrónico</label>
+                                        <input type="email" id="email" name="email" value="juan.garcia@email.com" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="phone">Teléfono</label>
+                                        <input type="tel" id="phone" name="phone" value="+52 55 1234 5678">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="birthdate">Fecha de Nacimiento</label>
+                                        <input type="date" id="birthdate" name="birthdate" value="1990-05-15">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="document-type">Tipo de Documento</label>
+                                        <select id="document-type" name="document-type">
+                                            <option value="passport" selected>Pasaporte</option>
+                                            <option value="id">Cédula de Identidad</option>
+                                            <option value="license">Licencia de Conducir</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="document-number">Número de Documento</label>
+                                        <input type="text" id="document-number" name="document-number" value="MX123456789">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="nationality">Nacionalidad</label>
+                                        <input type="text" id="nationality" name="nationality" value="Mexicana">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-primary">Guardar Cambios</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Settings Section -->
+                    <div class="profile-settings-section">
+                        <!-- Travel Preferences -->
+                        <div class="profile-card">
+                            <h4>Preferencias de Viaje</h4>
+                            <form id="travel-preferences-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="seat-preference">Preferencia de Asiento</label>
+                                        <select id="seat-preference" name="seat-preference">
+                                            <option value="window" selected>Ventana</option>
+                                            <option value="aisle">Pasillo</option>
+                                            <option value="middle">Medio</option>
+                                            <option value="no-preference">Sin preferencia</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="meal-preference">Preferencia de Comida</label>
+                                        <select id="meal-preference" name="meal-preference">
+                                            <option value="regular" selected>Regular</option>
+                                            <option value="vegetarian">Vegetariana</option>
+                                            <option value="vegan">Vegana</option>
+                                            <option value="halal">Halal</option>
+                                            <option value="kosher">Kosher</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="class-preference">Clase Preferida</label>
+                                        <select id="class-preference" name="class-preference">
+                                            <option value="economy" selected>Económica</option>
+                                            <option value="premium">Premium</option>
+                                            <option value="business">Business</option>
+                                            <option value="first">Primera Clase</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="special-assistance">Asistencia Especial</label>
+                                        <select id="special-assistance" name="special-assistance">
+                                            <option value="none" selected>Ninguna</option>
+                                            <option value="wheelchair">Silla de ruedas</option>
+                                            <option value="visual">Impedimento visual</option>
+                                            <option value="hearing">Impedimento auditivo</option>
+                                            <option value="other">Otro</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-primary">Guardar Preferencias</button>
+                            </form>
+                        </div>
+
+                        <!-- Security Settings -->
+                        <div class="profile-card">
+                            <h4>Seguridad</h4>
+                            <form id="security-form">
+                                <div class="form-group">
+                                    <label for="current-password">Contraseña Actual</label>
+                                    <input type="password" id="current-password" name="current-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-password">Nueva Contraseña</label>
+                                    <input type="password" id="new-password" name="new-password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">Confirmar Nueva Contraseña</label>
+                                    <input type="password" id="confirm-password" name="confirm-password" required>
+                                </div>
+                                <button type="submit" class="btn-primary">Cambiar Contraseña</button>
+                            </form>
+                        </div>
+
+                        <!-- Notification Settings -->
+                        <div class="profile-card">
+                            <h4>Notificaciones</h4>
+                            <form id="notifications-form">
+                                <div class="form-check">
+                                    <input type="checkbox" id="email-notifications" name="email-notifications" checked>
+                                    <label for="email-notifications">Notificaciones por correo electrónico</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="sms-notifications" name="sms-notifications">
+                                    <label for="sms-notifications">Notificaciones por SMS</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="flight-updates" name="flight-updates" checked>
+                                    <label for="flight-updates">Actualizaciones de vuelo</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="booking-reminders" name="booking-reminders" checked>
+                                    <label for="booking-reminders">Recordatorios de reserva</label>
+                                </div>
+                                <div class="form-check">
+                                    <input type="checkbox" id="promotional-offers" name="promotional-offers">
+                                    <label for="promotional-offers">Ofertas promocionales</label>
+                                </div>
+                                <button type="submit" class="btn-primary">Guardar Configuración</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Icon" class="footer-icon">
+                <span>AeroNexus</span>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 AeroNexus - Todos los derechos reservados</p>
+                <p>Aeropuerto Internacional - Tu puerta al mundo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/profile-script.js"></script>
+</body>
+</html>

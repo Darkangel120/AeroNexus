@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - AeroNexus</title>
+    <link rel="stylesheet" href="../assets/css/dashboard-styles.css">
+    <link rel="icon" href="../../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header id="dashboard-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Logo" class="logo-image">
+                <span class="logo-text">AeroNexus</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="flight-search.html">Buscar Vuelos</a></li>
+                    <li><a href="bookings.html">Mis Reservas</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                    <li><a href="profile.html">Perfil</a></li>
+                </ul>
+                <ul>
+                    <li class="notifications">
+                        <i class="fas fa-bell" id="notification-icon"></i>
+                        <span class="notification-badge" id="notification-count">0</span>
+                        <div class="notification-dropdown" id="notification-dropdown">
+                            <!-- Notifications will be populated here -->
+                        </div>
+                    </li>
+                    <li class="user-menu">
+                        <span id="user-name">Usuario</span>
+                        <div class="dropdown">
+                            <a href="#" id="logout-btn">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="welcome">
+            <div class="container">
+                <div class="welcome-card">
+                    <h2>¡Bienvenido de vuelta, <span id="user-greeting">Usuario</span>!</h2>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard-main">
+            <div class="container">
+                <div class="dashboard-grid">
+                    <div class="upcoming-flights-section">
+                        <h2>Mis Próximos Vuelos</h2>
+                        <div class="flights-container">
+                            <div class="flight-card">
+                                <div class="flight-info">
+                                    <div class="flight-route">
+                                        <span class="origin">MEX</span>
+                                        <i class="fas fa-plane"></i>
+                                        <span class="destination">CDG</span>
+                                    </div>
+                                    <div class="flight-details">
+                                        <p><strong>Vuelo:</strong> AN123</p>
+                                        <p><strong>Fecha:</strong> 15 Dic 2024</p>
+                                        <p><strong>Hora:</strong> 14:30 - 08:45 (+1 día)</p>
+                                        <p><strong>Asiento:</strong> 12A</p>
+                                    </div>
+                                </div>
+                                <div class="flight-status">
+                                    <span class="status on-time">A Tiempo</span>
+                                    <button class="btn-secondary">Ver Detalles</button>
+                                </div>
+                            </div>
+                            <!-- Más tarjetas de vuelo se pueden agregar dinámicamente -->
+                        </div>
+                    </div>
+
+                    <div class="quick-actions-section">
+                        <h2>Acciones Rápidas</h2>
+                        <div class="actions-grid">
+                            <div class="action-card" id="book-flight">
+                                <div class="action-icon"><i class="fas fa-plane"></i></div>
+                                <h3>Reservar Vuelo</h3>
+                                <p>Busca y reserva tu próximo vuelo</p>
+                            </div>
+                            <div class="action-card" id="manage-bookings">
+                                <div class="action-icon"><i class="fas fa-calendar-check"></i></div>
+                                <h3>Gestionar Reservas</h3>
+                                <p>Modifica o cancela tus reservas</p>
+                            </div>
+                            <div class="action-card" id="online-checkin">
+                                <div class="action-icon"><i class="fas fa-qrcode"></i></div>
+                                <h3>Check-in Online</h3>
+                                <p>Realiza check-in desde casa</p>
+                            </div>
+                            <div class="action-card" id="flight-status">
+                                <div class="action-icon"><i class="fas fa-info-circle"></i></div>
+                                <h3>Estado de Vuelos</h3>
+                                <p>Consulta el estado de tus vuelos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer id="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Icon" class="footer-icon">
+                <span>AeroNexus</span>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 AeroNexus - Todos los derechos reservados</p>
+                <p>Aeropuerto Internacional - Tu puerta al mundo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/dashboard-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reservas - AeroNexus</title>
+    <link rel="stylesheet" href="../assets/css/dashboard-styles.css">
+    <link rel="icon" href="../../assets/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header id="dashboard-header">
+        <div class="header-container">
+            <div class="header-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Logo" class="logo-image">
+                <span class="logo-text">AeroNexus</span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="flight-search.html">Buscar Vuelos</a></li>
+                    <li><a href="checkin.html">Check-in</a></li>
+                    <li><a href="profile.html">Perfil</a></li>
+                </ul>
+                <ul>
+                    <li class="notifications">
+                        <i class="fas fa-bell" id="notification-icon"></i>
+                        <span class="notification-badge" id="notification-count">0</span>
+                        <div class="notification-dropdown" id="notification-dropdown">
+                            <!-- Notifications will be populated here -->
+                        </div>
+                    </li>
+                    <li class="user-menu">
+                        <span id="user-name">Usuario</span>
+                        <div class="dropdown">
+                            <a href="#" id="logout-btn">Cerrar Sesión</a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="bookings">
+            <div class="container">
+                <h2>Mis Reservas</h2>
+
+                <div class="booking-tabs">
+                    <button class="tab-btn active" data-tab="upcoming">Próximas</button>
+                    <button class="tab-btn" data-tab="past">Pasadas</button>
+                    <button class="tab-btn" data-tab="cancelled">Canceladas</button>
+                </div>
+
+                <div id="upcoming-bookings" class="booking-section active">
+                    <div class="bookings-container">
+                        <div class="booking-card">
+                            <div class="booking-header">
+                                <div class="booking-route">
+                                    <span>MEX</span>
+                                    <i class="fas fa-plane"></i>
+                                    <span>CDG</span>
+                                </div>
+                                <span class="booking-status confirmed">Confirmada</span>
+                            </div>
+                            <div class="booking-details">
+                                <div class="booking-info">
+                                    <p><strong>Código:</strong> AN123456</p>
+                                    <p><strong>Fecha:</strong> 15 Dic 2024</p>
+                                    <p><strong>Hora:</strong> 14:30</p>
+                                    <p><strong>Pasajeros:</strong> 1</p>
+                                    <p><strong>Asiento:</strong> 12A</p>
+                                </div>
+                                <div class="booking-actions">
+                                    <button class="btn-primary">Check-in</button>
+                                    <button class="btn-secondary">Modificar</button>
+                                    <button class="btn-danger">Cancelar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Más reservas se pueden agregar dinámicamente -->
+                    </div>
+                </div>
+
+                <div id="past-bookings" class="booking-section">
+                    <div class="bookings-container">
+                        <div class="booking-card completed">
+                            <div class="booking-header">
+                                <div class="booking-route">
+                                    <span>MEX</span>
+                                    <i class="fas fa-plane"></i>
+                                    <span>MAD</span>
+                                </div>
+                                <span class="booking-status completed">Completada</span>
+                            </div>
+                            <div class="booking-details">
+                                <div class="booking-info">
+                                    <p><strong>Código:</strong> AN789012</p>
+                                    <p><strong>Fecha:</strong> 10 Nov 2024</p>
+                                    <p><strong>Hora:</strong> 09:15</p>
+                                    <p><strong>Pasajeros:</strong> 2</p>
+                                    <p><strong>Asiento:</strong> 8B, 8C</p>
+                                </div>
+                                <div class="booking-actions">
+                                    <button class="btn-secondary">Ver Detalles</button>
+                                    <button class="btn-secondary">Reclamar Equipaje</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cancelled-bookings" class="booking-section">
+                    <div class="bookings-container">
+                        <p class="no-bookings">No tienes reservas canceladas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="dashboard-footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../../assets/favicon.png" alt="AeroNexus Icon" class="footer-icon">
+                <span>AeroNexus</span>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2025 AeroNexus - Todos los derechos reservados</p>
+                <p>Aeropuerto Internacional - Tu puerta al mundo</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/bookings-script.js"></script>
+</body>
+</html>
