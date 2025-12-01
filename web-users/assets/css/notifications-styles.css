@@ -1,0 +1,287 @@
+/* Estilos para Notificaciones de AeroNexus */
+
+.notifications {
+    position: relative;
+}
+
+#notification-icon {
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+#notification-icon:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.notification-badge {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+}
+
+.notification-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 350px;
+    max-height: 400px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    overflow-y: auto;
+    display: none;
+    margin-top: 0.5rem;
+}
+
+.notification-dropdown.show {
+    display: block;
+}
+
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+    background-color: #f8f9fa;
+}
+
+.notification-item.unread {
+    background-color: #e3f2fd;
+}
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+.notification-icon {
+    margin-right: 0.75rem;
+    margin-top: 0.25rem;
+    color: var(--primary-blue, #007bff);
+    font-size: 1.2rem;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.25rem;
+    font-size: 0.9rem;
+}
+
+.notification-message {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+}
+
+.notification-time {
+    color: #999;
+    font-size: 0.75rem;
+}
+
+.notification-unread-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #007bff;
+    border-radius: 50%;
+    margin-left: 0.5rem;
+    margin-top: 0.25rem;
+    flex-shrink: 0;
+}
+
+.no-notifications {
+    padding: 2rem;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+.mark-all-read-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-blue, #007bff);
+    color: white;
+    border: none;
+    border-radius: 0 0 8px 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.mark-all-read-btn:hover {
+    background-color: var(--primary-blue-dark, #0056b3);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .notification-dropdown {
+        width: 300px;
+        right: -10px;
+    }
+
+    .notification-item {
+        padding: 0.75rem;
+    }
+
+    .notification-title {
+        font-size: 0.85rem;
+    }
+
+    .notification-message {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* extraído desde dashboard-styles.css */
+
+
+.notification-time {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* extraído desde dashboard-styles.css (heurística) */
+
+
+.notification-content p {
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+/* extraído desde dashboard-styles.css (heurística) */
+
+
+.notification-content h4 {
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
+/* extraído desde dashboard-styles.css */
+
+
+.notification-icon {
+    font-size: 2rem;
+    color: var(--warning);
+    flex-shrink: 0;
+}
+
+/* extraído desde dashboard-styles.css (heurística) */
+
+
+.notification-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px var(--shadow);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* extraído desde dashboard-styles.css (heurística) */
+
+
+.notifications-list {
+    display: grid;
+    gap: 1rem;
+}
+
+/* extraído desde dashboard-styles.css (heurística) */
+
+
+.notification-dropdown:empty::before {
+    content: "No hay notificaciones nuevas";
+    padding: 1rem;
+    color: var(--text-light);
+    text-align: center;
+    display: block;
+}
+
+/* extraído desde dashboard-styles.css */
+
+
+.notification-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    min-width: 300px;
+    max-width: 400px;
+    z-index: 1001;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* extraído desde dashboard-styles.css */
+
+
+.notification-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: var(--danger);
+    color: var(--white);
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+}
+
+/* extraído desde dashboard-styles.css (heurística) */
+
+
+.notifications:hover i {
+    color: #28c1cf;
+}
+
+/* extraído desde dashboard-styles.css (heurística) */
+
+
+.notifications i {
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+/* extraído desde dashboard-styles.css (heurística) */
+
+
+/* Notifications in header */
+.notifications {
+    position: relative;
+    cursor: pointer;
+    margin-right: 1rem;
+}

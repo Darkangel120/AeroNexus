@@ -14,7 +14,6 @@ function initializeDashboard() {
 
     // Cargar datos iniciales
     loadUpcomingFlights();
-    loadNotifications();
 }
 
 function loadUserData() {
@@ -33,25 +32,12 @@ function setupEventListeners() {
     userMenu.addEventListener('click', function(e) {
         e.stopPropagation();
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-    // Cerrar desplegable de notificaciones
-        document.getElementById('notification-dropdown').style.display = 'none';
     });
 
-    // Desplegable de notificaciones
-    const notificationIcon = document.getElementById('notification-icon');
-    const notificationDropdown = document.getElementById('notification-dropdown');
-
-    notificationIcon.addEventListener('click', function(e) {
-        e.stopPropagation();
-        notificationDropdown.style.display = notificationDropdown.style.display === 'block' ? 'none' : 'block';
-    // Cerrar menú desplegable del usuario
-        dropdown.style.display = 'none';
-    });
 
     // Cerrar desplegables al hacer clic fuera
     document.addEventListener('click', function() {
         dropdown.style.display = 'none';
-        notificationDropdown.style.display = 'none';
     });
 
     // Funcionalidad de logout

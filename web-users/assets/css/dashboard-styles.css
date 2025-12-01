@@ -126,61 +126,6 @@ html, body {
     background: #f8f9fa;
 }
 
-/* Notifications in header */
-.notifications {
-    position: relative;
-    cursor: pointer;
-    margin-right: 1rem;
-}
-
-.notifications i {
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-.notifications:hover i {
-    color: #28c1cf;
-}
-
-.notification-badge {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: var(--danger);
-    color: var(--white);
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    font-weight: bold;
-}
-
-.notification-dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    min-width: 300px;
-    max-width: 400px;
-    z-index: 1001;
-    max-height: 400px;
-    overflow-y: auto;
-}
-
-.notification-dropdown:empty::before {
-    content: "No hay notificaciones nuevas";
-    padding: 1rem;
-    color: var(--text-light);
-    text-align: center;
-    display: block;
-}
-
 /* Main Content */
 main {
     margin-top: 80px;
@@ -459,55 +404,6 @@ main {
     box-shadow: 0 4px 15px rgba(3, 86, 191, 0.3);
 }
 
-/* Notifications Section */
-#notifications {
-    padding: 60px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-}
-
-#notifications h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
-    color: var(--text-dark);
-}
-
-.notifications-list {
-    display: grid;
-    gap: 1rem;
-}
-
-.notification-card {
-    background: var(--white);
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 15px var(--shadow);
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-}
-
-.notification-icon {
-    font-size: 2rem;
-    color: var(--warning);
-    flex-shrink: 0;
-}
-
-.notification-content h4 {
-    margin-bottom: 0.5rem;
-    color: var(--text-dark);
-}
-
-.notification-content p {
-    color: var(--text-light);
-    margin-bottom: 0.5rem;
-}
-
-.notification-time {
-    font-size: 0.9rem;
-    color: var(--text-light);
-}
-
 /* Footer */
 #dashboard-footer {
     background: linear-gradient(90deg, #343a40 0%, #495057 100%);
@@ -654,8 +550,9 @@ main {
 .step-titles {
     display: flex;
     justify-content: center;
-    gap: 6rem;
+    gap: 2rem;
     margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .step-titles span {
