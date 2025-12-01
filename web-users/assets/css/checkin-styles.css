@@ -1,0 +1,255 @@
+/* Estilos específicos para Check-in */
+
+.checkin-section {
+    margin-bottom: 3rem;
+}
+
+.checkin-steps {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.checkin-steps::before {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: #e9ecef;
+    z-index: 1;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    max-width: 200px;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.step.active .step-number {
+    background: var(--primary-blue);
+    color: var(--white);
+}
+
+.step-title {
+    text-align: center;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+.step.active .step-title {
+    color: var(--primary-blue);
+}
+
+.step-content {
+    display: none;
+    background: var(--white);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 5px 15px var(--shadow);
+}
+
+.step-content.active {
+    display: block;
+}
+
+.seat-selection {
+    margin: 2rem 0;
+}
+
+.seat-map {
+    margin-bottom: 2rem;
+}
+
+.seat-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.seat-label {
+    width: 30px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-light);
+}
+
+.seat {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #e9ecef;
+    border-radius: 5px;
+    background: var(--white);
+    margin: 0 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.seat.available:hover {
+    border-color: var(--primary-blue);
+    background: #f8f9fa;
+}
+
+.seat.selected {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.seat.occupied {
+    background: var(--danger);
+    color: var(--white);
+    cursor: not-allowed;
+}
+
+.aisle {
+    width: 20px;
+}
+
+.seat-legend {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.legend-item .seat {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    cursor: default;
+}
+
+.passenger-info {
+    margin: 2rem 0;
+}
+
+.passenger-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-blue);
+}
+
+.form-check {
+    margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.boarding-pass {
+    background: var(--white);
+    border: 2px solid var(--primary-blue);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.pass-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.pass-logo {
+    height: 40px;
+    width: auto;
+}
+
+.pass-details {
+    margin-bottom: 2rem;
+}
+
+.pass-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.qr-code {
+    margin: 1rem 0;
+}
+
+.qr-code img {
+    width: 100px;
+    height: 100px;
+}
+
+.checkin-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-light);
+}
+
+@media (max-width: 768px) {
+    .checkin-steps {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .step {
+        margin-bottom: 1rem;
+    }
+
+    .checkin-steps::before {
+        display: none;
+    }
+
+    .seat-row {
+        flex-wrap: wrap;
+    }
+
+    .pass-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .checkin-actions {
+        flex-direction: column;
+    }
+}
