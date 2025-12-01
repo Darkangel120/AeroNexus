@@ -16,7 +16,8 @@ function initializeDashboard() {
 function setupEventListeners() {
     // Acciones rápidas
     document.getElementById('book-flight').addEventListener('click', function() {
-        scrollToSection('flight-search');
+        // Navegar a página de vuelos
+        window.location.href = 'flight-search.html';
     });
 
     document.getElementById('manage-bookings').addEventListener('click', function() {
@@ -34,11 +35,6 @@ function setupEventListeners() {
         alert('Funcionalidad de estado de vuelos próximamente disponible');
     });
 
-    // Búsqueda de vuelos
-    document.getElementById('search-btn').addEventListener('click', function() {
-        performFlightSearch();
-    });
-
     // Navigation links
     document.querySelectorAll('.main-nav a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
@@ -47,27 +43,6 @@ function setupEventListeners() {
             scrollToSection(targetId);
         });
     });
-}
-
-function performFlightSearch() {
-    const origin = document.getElementById('origin').value;
-    const destination = document.getElementById('destination').value;
-    const departureDate = document.getElementById('departure-date').value;
-    const returnDate = document.getElementById('return-date').value;
-    const passengers = document.getElementById('passengers').value;
-
-    if (!origin || !destination || !departureDate) {
-        alert('Por favor, complete todos los campos obligatorios');
-        return;
-    }
-
-    // En una implementación real, esto enviaría una solicitud al backend
-    alert(`Buscando vuelos de ${origin} a ${destination} para ${passengers} pasajero(s) el ${departureDate}`);
-}
-
-function loadUpcomingFlights() {
-    // cargar vuelos próximos
-
 }
 
 // Agregar estilos de carga dinámicamente
