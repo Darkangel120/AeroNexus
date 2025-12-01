@@ -16,11 +16,7 @@ function initializeBookings() {
     loadBookings();
 }
 
-function loadUserData() {
-    // Placeholder for loading user data from backend
-    const userName = localStorage.getItem('userName') || 'Usuario';
-    document.getElementById('user-name').textContent = userName;
-}
+
 
 function setupEventListeners() {
     // Cambio de pestañas
@@ -86,15 +82,6 @@ function startCheckIn(bookingCode) {
     window.location.href = 'checkin.html';
 }
 
-function logout() {
-    // Limpiar datos del usuario
-    localStorage.removeItem('userName');
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('selectedFlight');
-    localStorage.removeItem('checkInBooking');
 
-    // Redirigir a la página de login
-    window.location.href = 'login.html';
-}
 
 

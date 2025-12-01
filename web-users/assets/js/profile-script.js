@@ -6,20 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeProfile() {
-    // Cargar datos del usuario
-    loadUserData();
-
     // Configurar escuchadores de eventos
     setupEventListeners();
 
     // Cargar datos del perfil
     loadProfileData();
-}
-
-function loadUserData() {
-    // Marcador de posición para cargar datos del usuario desde el backend
-    const userName = localStorage.getItem('userName') || 'Usuario';
-    document.getElementById('user-name').textContent = userName;
 }
 
 function setupEventListeners() {
@@ -46,18 +37,10 @@ function setupEventListeners() {
         e.preventDefault();
         saveNotificationSettings();
     });
-
-    // Funcionalidad de logout
-    document.getElementById('logout-btn').addEventListener('click', function(e) {
-        e.preventDefault();
-        logout();
-    });
 }
 
 function loadProfileData() {
-    // Marcador de posición para cargar datos del perfil desde el backend
     // En una implementación real, esto obtendría datos de una API
-    // Por ahora, el HTML ya tiene datos de ejemplo
 }
 
 function savePersonalInfo() {
@@ -77,7 +60,6 @@ function savePersonalInfo() {
         return;
     }
 
-    // Marcador de posición para guardar información personal
     // En una implementación real, esto enviaría una solicitud al backend
     alert('Información personal guardada exitosamente');
 
@@ -86,14 +68,12 @@ function savePersonalInfo() {
     document.getElementById('profile-name').textContent = fullName;
     document.getElementById('profile-email').textContent = data.email;
     localStorage.setItem('userName', fullName);
-    document.getElementById('user-name').textContent = fullName;
 }
 
 function saveTravelPreferences() {
     const formData = new FormData(document.getElementById('travel-preferences-form'));
     const data = Object.fromEntries(formData);
 
-    // Marcador de posición para guardar preferencias de viaje
     // En una implementación real, esto enviaría una solicitud al backend
     alert('Preferencias de viaje guardadas exitosamente');
 }
@@ -121,7 +101,6 @@ function changePassword() {
         return;
     }
 
-    // Marcador de posición para cambiar contraseña
     // En una implementación real, esto enviaría una solicitud al backend
     alert('Contraseña cambiada exitosamente');
 
@@ -133,19 +112,6 @@ function saveNotificationSettings() {
     const formData = new FormData(document.getElementById('notifications-form'));
     const data = Object.fromEntries(formData);
 
-    // Marcador de posición para guardar configuración de notificaciones
     // En una implementación real, esto enviaría una solicitud al backend
     alert('Configuración de notificaciones guardada exitosamente');
-}
-
-function logout() {
-    // Limpiar datos del usuario
-    localStorage.removeItem('userName');
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('selectedFlight');
-    localStorage.removeItem('checkInBooking');
-    localStorage.removeItem('selectedSeat');
-
-    // Redirigir a la página de login
-    window.location.href = 'login.html';
 }

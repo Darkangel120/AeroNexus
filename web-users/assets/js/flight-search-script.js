@@ -16,11 +16,7 @@ function initializeFlightSearch() {
     setMinimumDates();
 }
 
-function loadUserData() {
-    // Placeholder for loading user data from backend
-    const userName = localStorage.getItem('userName') || 'Usuario';
-    document.getElementById('user-name').textContent = userName;
-}
+
 
 function setupEventListeners() {
     // Formulario de búsqueda de vuelos
@@ -194,31 +190,7 @@ function selectFlight(flight) {
 
     // Redirigir a página de reservas o mostrar modal de reservas
     alert(`Vuelo ${flight.id} seleccionado. Redirigiendo a la página de reservas...`);
-    // window.location.href = 'bookings.html';
+    window.location.href = 'bookings.html';
 }
 
-function scrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        section.scrollIntoView({ behavior: 'smooth' });
-    }
-}
 
-function logout() {
-    // Clear user data
-    localStorage.removeItem('userName');
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('selectedFlight');
-
-    // Redirect to login page
-    window.location.href = 'login.html';
-}
-
-// Funciones de utilidad
-function showLoading(elementId) {
-    const element = document.getElementById(elementId);
-    if (element) {
-        element.innerHTML = '<div class="loading">Buscando vuelos...</div>';
-        element.style.display = 'block';
-    }
-}

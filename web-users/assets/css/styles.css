@@ -150,10 +150,9 @@ html, body {
     color: var(--white);
 }
 
-.btn-primary:hover {
-    background: #1f6fd0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(3, 86, 191, 0.3);
+.btn-primary a{
+    text-decoration: none;
+    color: var(--white);
 }
 
 .btn-secondary {
