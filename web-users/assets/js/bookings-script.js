@@ -1,18 +1,18 @@
-// Bookings Script for AeroNexus User Portal
+// Script de Reservas para el Portal de Usuarios de AeroNexus
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize bookings page
+    // Inicializar página de reservas
     initializeBookings();
 });
 
 function initializeBookings() {
-    // Load user data
+    // Cargar datos del usuario
     loadUserData();
 
-    // Setup event listeners
+    // Configurar escuchadores de eventos
     setupEventListeners();
 
-    // Load bookings data
+    // Cargar datos de reservas
     loadBookings();
 }
 
@@ -23,22 +23,22 @@ function loadUserData() {
 }
 
 function setupEventListeners() {
-    // Tab switching
+    // Cambio de pestañas
     document.querySelectorAll('.tab-btn').forEach(tab => {
         tab.addEventListener('click', function() {
             switchTab(this.dataset.tab);
         });
     });
 
-    // Booking actions
+    // Acciones de reserva
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('btn-danger')) {
-            // Cancel booking
+    // Cancelar reserva
             const bookingCard = e.target.closest('.booking-card');
             const bookingCode = bookingCard.querySelector('strong:contains("Código")').nextSibling.textContent.trim();
             cancelBooking(bookingCode);
         } else if (e.target.classList.contains('btn-primary') && e.target.textContent === 'Check-in') {
-            // Check-in
+    // Check-in
             const bookingCard = e.target.closest('.booking-card');
             const bookingCode = bookingCard.querySelector('strong:contains("Código")').nextSibling.textContent.trim();
             startCheckIn(bookingCode);
@@ -53,51 +53,51 @@ function setupEventListeners() {
 }
 
 function switchTab(tabName) {
-    // Remove active class from all tabs and sections
+    // Remover clase activa de todas las pestañas y secciones
     document.querySelectorAll('.tab-btn').forEach(tab => tab.classList.remove('active'));
     document.querySelectorAll('.booking-section').forEach(section => section.classList.remove('active'));
 
-    // Add active class to selected tab and section
+    // Agregar clase activa a la pestaña y sección seleccionada
     document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
     document.getElementById(`${tabName}-bookings`).classList.add('active');
 }
 
 function loadBookings() {
-    // Placeholder for loading bookings from backend
-    // In a real implementation, this would fetch from an API
-    // For now, the HTML already has sample data
+    // Marcador de posición para cargar reservas desde el backend
+    // En una implementación real, esto obtendría datos de una API
+    // Por ahora, el HTML ya tiene datos de muestra
 }
 
 function cancelBooking(bookingCode) {
     if (confirm(`¿Estás seguro de que quieres cancelar la reserva ${bookingCode}? Esta acción no se puede deshacer.`)) {
-        // Placeholder for cancellation logic
+    // Marcador de posición para lógica de cancelación
         alert(`Reserva ${bookingCode} cancelada exitosamente. Se procesará el reembolso según la política de cancelación.`);
-        // In a real implementation, this would send a request to the backend
-        // Then reload the bookings data
+    // En una implementación real, esto enviaría una solicitud al backend
+    // Luego recargar los datos de reservas
         location.reload();
     }
 }
 
 function startCheckIn(bookingCode) {
-    // Store booking code for check-in process
+    // Almacenar código de reserva para el proceso de check-in
     localStorage.setItem('checkInBooking', bookingCode);
 
-    // Redirect to check-in page
+    // Redirigir a la página de check-in
     window.location.href = 'checkin.html';
 }
 
 function logout() {
-    // Clear user data
+    // Limpiar datos del usuario
     localStorage.removeItem('userName');
     localStorage.removeItem('userToken');
     localStorage.removeItem('selectedFlight');
     localStorage.removeItem('checkInBooking');
 
-    // Redirect to login page
+    // Redirigir a la página de login
     window.location.href = 'login.html';
 }
 
-// Add booking-specific styles dynamically
+// Agregar estilos específicos de reservas dinámicamente
 const bookingStyles = `
     .booking-tabs {
         display: flex;

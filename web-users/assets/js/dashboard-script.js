@@ -1,18 +1,18 @@
-// Dashboard Script for AeroNexus User Portal
+// Script de Dashboard para el Portal de Usuarios de AeroNexus
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize dashboard
+    // Inicializar dashboard
     initializeDashboard();
 });
 
 function initializeDashboard() {
-    // Load user data
+    // Cargar datos del usuario
     loadUserData();
 
-    // Setup event listeners
+    // Configurar escuchadores de eventos
     setupEventListeners();
 
-    // Load initial data
+    // Cargar datos iniciales
     loadUpcomingFlights();
     loadNotifications();
 }
@@ -26,61 +26,61 @@ function loadUserData() {
 }
 
 function setupEventListeners() {
-    // User menu dropdown
+    // Menú desplegable del usuario
     const userMenu = document.querySelector('.user-menu');
     const dropdown = document.querySelector('.dropdown');
 
     userMenu.addEventListener('click', function(e) {
         e.stopPropagation();
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
-        // Close notification dropdown
+    // Cerrar desplegable de notificaciones
         document.getElementById('notification-dropdown').style.display = 'none';
     });
 
-    // Notifications dropdown
+    // Desplegable de notificaciones
     const notificationIcon = document.getElementById('notification-icon');
     const notificationDropdown = document.getElementById('notification-dropdown');
 
     notificationIcon.addEventListener('click', function(e) {
         e.stopPropagation();
         notificationDropdown.style.display = notificationDropdown.style.display === 'block' ? 'none' : 'block';
-        // Close user menu dropdown
+    // Cerrar menú desplegable del usuario
         dropdown.style.display = 'none';
     });
 
-    // Close dropdowns when clicking outside
+    // Cerrar desplegables al hacer clic fuera
     document.addEventListener('click', function() {
         dropdown.style.display = 'none';
         notificationDropdown.style.display = 'none';
     });
 
-    // Logout functionality
+    // Funcionalidad de logout
     document.getElementById('logout-btn').addEventListener('click', function(e) {
         e.preventDefault();
         logout();
     });
 
-    // Quick actions
+    // Acciones rápidas
     document.getElementById('book-flight').addEventListener('click', function() {
         scrollToSection('flight-search');
     });
 
     document.getElementById('manage-bookings').addEventListener('click', function() {
-        // Placeholder - in real app, navigate to bookings page
+    // Marcador de posición - en app real, navegar a página de reservas
         alert('Funcionalidad de gestión de reservas próximamente disponible');
     });
 
     document.getElementById('online-checkin').addEventListener('click', function() {
-        // Placeholder - in real app, navigate to check-in page
+    // Marcador de posición - en app real, navegar a página de check-in
         alert('Funcionalidad de check-in online próximamente disponible');
     });
 
     document.getElementById('flight-status').addEventListener('click', function() {
-        // Placeholder - in real app, show flight status modal
+    // Marcador de posición - en app real, mostrar modal de estado de vuelos
         alert('Funcionalidad de estado de vuelos próximamente disponible');
     });
 
-    // Flight search
+    // Búsqueda de vuelos
     document.getElementById('search-btn').addEventListener('click', function() {
         performFlightSearch();
     });
@@ -114,33 +114,33 @@ function performFlightSearch() {
         return;
     }
 
-    // Placeholder for flight search
-    // In a real implementation, this would send a request to the backend
+    // Marcador de posición para búsqueda de vuelos
+    // En una implementación real, esto enviaría una solicitud al backend
     alert(`Buscando vuelos de ${origin} a ${destination} para ${passengers} pasajero(s) el ${departureDate}`);
 }
 
 function loadUpcomingFlights() {
-    // Placeholder for loading upcoming flights
+    // Marcador de posición para cargar vuelos próximos
     // In a real implementation, this would fetch from an API
     // For now, the HTML already has sample data
 }
 
 function loadNotifications() {
-    // Placeholder for loading notifications
+    // Marcador de posición para cargar notificaciones
     // In a real implementation, this would fetch from an API
     // For now, the HTML already has sample data
 }
 
 function logout() {
-    // Clear user data
+    // Limpiar datos del usuario
     localStorage.removeItem('userName');
     localStorage.removeItem('userToken');
 
-    // Redirect to login page
+    // Redirigir a la página de login
     window.location.href = 'login.html';
 }
 
-// Utility functions
+// Funciones de utilidad
 function showLoading(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -152,7 +152,7 @@ function hideLoading(elementId) {
     // Remove loading indicator
 }
 
-// Add loading styles dynamically
+// Agregar estilos de carga dinámicamente
 const loadingStyles = `
     .loading {
         text-align: center;

@@ -85,7 +85,7 @@ function searchBooking() {
 
     // Simular llamada a API
     setTimeout(() => {
-        // Datos de reserva simulados
+    // Datos de reserva simulados
         const mockBooking = {
             code: bookingCode,
             passenger: `${lastName}, Juan`,
@@ -141,7 +141,7 @@ function selectSeat(seatElement) {
 
 function nextStep(currentStep) {
     if (currentStep === 1) {
-        // Validar selección de asiento
+    // Validar selección de asiento
         const selectedSeat = document.querySelector('.seat.selected');
         if (!selectedSeat) {
             alert('Por favor, selecciona un asiento');
@@ -152,14 +152,14 @@ function nextStep(currentStep) {
         updateStepIndicator(2);
         showStep(2);
     } else if (currentStep === 2) {
-        // Validar aceptación de términos
+    // Validar aceptación de términos
         const termsCheck = document.getElementById('terms-check');
         if (!termsCheck.checked) {
             alert('Por favor, acepta los términos y condiciones');
             return;
         }
 
-        // Completar check-in
+    // Completar check-in
         completeCheckIn();
     }
 }

@@ -1,18 +1,18 @@
-// Flight Search Script for AeroNexus User Portal
+// Script de Búsqueda de Vuelos para el Portal de Usuarios de AeroNexus
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize flight search
+    // Inicializar búsqueda de vuelos
     initializeFlightSearch();
 });
 
 function initializeFlightSearch() {
-    // Load user data
+    // Cargar datos del usuario
     loadUserData();
 
-    // Setup event listeners
+    // Configurar escuchadores de eventos
     setupEventListeners();
 
-    // Set minimum date for date inputs
+    // Establecer fecha mínima para entradas de fecha
     setMinimumDates();
 }
 
@@ -23,19 +23,19 @@ function loadUserData() {
 }
 
 function setupEventListeners() {
-    // Flight search form
+    // Formulario de búsqueda de vuelos
     document.getElementById('flight-search-form').addEventListener('submit', function(e) {
         e.preventDefault();
         performFlightSearch();
     });
 
-    // Logout functionality
+    // Funcionalidad de logout
     document.getElementById('logout-btn').addEventListener('click', function(e) {
         e.preventDefault();
         logout();
     });
 
-    // Navigation links
+    // Enlaces de navegación
     document.querySelectorAll('.main-nav a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
@@ -53,7 +53,7 @@ function setMinimumDates() {
     departureDate.setAttribute('min', today);
     returnDate.setAttribute('min', today);
 
-    // Update return date min when departure date changes
+    // Actualizar mínimo de fecha de retorno cuando cambia la fecha de salida
     departureDate.addEventListener('change', function() {
         returnDate.setAttribute('min', this.value);
         if (returnDate.value && returnDate.value < this.value) {
@@ -80,10 +80,10 @@ function performFlightSearch() {
         return;
     }
 
-    // Show loading state
+    // Mostrar estado de carga
     showLoading('search-results');
 
-    // Simulate API call delay
+    // Simular retraso de llamada a API
     setTimeout(() => {
         displaySearchResults({
             origin,
@@ -100,7 +100,7 @@ function displaySearchResults(searchParams) {
     const resultsContainer = document.getElementById('search-results');
     const flightsContainer = resultsContainer.querySelector('.flights-container');
 
-    // Mock flight data
+    // Datos de vuelo simulados
     const mockFlights = generateMockFlights(searchParams);
 
     flightsContainer.innerHTML = '';
@@ -119,15 +119,15 @@ function displaySearchResults(searchParams) {
 }
 
 function generateMockFlights(searchParams) {
-    // Generate mock flight data based on search parameters
+    // Generar datos de vuelo simulados basados en parámetros de búsqueda
     const flights = [];
-    const numFlights = Math.floor(Math.random() * 5) + 3; // 3-7 flights
+    const numFlights = Math.floor(Math.random() * 5) + 3; // 3-7 vuelos
 
     for (let i = 0; i < numFlights; i++) {
         const departureTime = new Date(searchParams.departureDate);
-        departureTime.setHours(6 + Math.floor(Math.random() * 14), Math.floor(Math.random() * 60)); // 6 AM to 8 PM
+        departureTime.setHours(6 + Math.floor(Math.random() * 14), Math.floor(Math.random() * 60)); // 6 AM a 8 PM
 
-        const duration = 2 + Math.floor(Math.random() * 12); // 2-14 hours
+        const duration = 2 + Math.floor(Math.random() * 12); // 2-14 horas
         const arrivalTime = new Date(departureTime.getTime() + duration * 60 * 60 * 1000);
 
         const price = 150 + Math.floor(Math.random() * 850); // $150-$1000
@@ -180,7 +180,7 @@ function createFlightCard(flight) {
         </div>
     `;
 
-    // Add event listener for flight selection
+    // Agregar escuchador de eventos para selección de vuelo
     card.querySelector('.select-flight').addEventListener('click', function() {
         selectFlight(flight);
     });
@@ -189,10 +189,10 @@ function createFlightCard(flight) {
 }
 
 function selectFlight(flight) {
-    // Store selected flight in localStorage or session
+    // Almacenar vuelo seleccionado en localStorage o sesión
     localStorage.setItem('selectedFlight', JSON.stringify(flight));
 
-    // Redirect to booking page or show booking modal
+    // Redirigir a página de reservas o mostrar modal de reservas
     alert(`Vuelo ${flight.id} seleccionado. Redirigiendo a la página de reservas...`);
     // window.location.href = 'bookings.html';
 }
@@ -214,7 +214,7 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-// Utility functions
+// Funciones de utilidad
 function showLoading(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
@@ -223,7 +223,7 @@ function showLoading(elementId) {
     }
 }
 
-// Add loading styles dynamically
+// Agregar estilos de carga dinámicamente
 const loadingStyles = `
     .loading {
         text-align: center;

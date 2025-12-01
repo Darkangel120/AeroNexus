@@ -64,24 +64,24 @@ function savePersonalInfo() {
     const formData = new FormData(document.getElementById('personal-info-form'));
     const data = Object.fromEntries(formData);
 
-    // Validate form
+    // Validar formulario
     if (!data['first-name'] || !data['last-name'] || !data.email) {
         alert('Por favor, complete todos los campos obligatorios');
         return;
     }
 
-    // Validate email format
+    // Validar formato de correo electrónico
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(data.email)) {
         alert('Por favor, ingrese un correo electrónico válido');
         return;
     }
 
-    // Placeholder for saving personal info
-    // In a real implementation, this would send a request to the backend
+    // Marcador de posición para guardar información personal
+    // En una implementación real, esto enviaría una solicitud al backend
     alert('Información personal guardada exitosamente');
 
-    // Update display name
+    // Actualizar nombre de visualización
     const fullName = `${data['first-name']} ${data['last-name']}`;
     document.getElementById('profile-name').textContent = fullName;
     document.getElementById('profile-email').textContent = data.email;
@@ -93,8 +93,8 @@ function saveTravelPreferences() {
     const formData = new FormData(document.getElementById('travel-preferences-form'));
     const data = Object.fromEntries(formData);
 
-    // Placeholder for saving travel preferences
-    // In a real implementation, this would send a request to the backend
+    // Marcador de posición para guardar preferencias de viaje
+    // En una implementación real, esto enviaría una solicitud al backend
     alert('Preferencias de viaje guardadas exitosamente');
 }
 
@@ -103,29 +103,29 @@ function changePassword() {
     const newPassword = document.getElementById('new-password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
 
-    // Validate form
+    // Validar formulario
     if (!currentPassword || !newPassword || !confirmPassword) {
         alert('Por favor, complete todos los campos');
         return;
     }
 
-    // Validate password strength
+    // Validar fortaleza de la contraseña
     if (newPassword.length < 8) {
         alert('La nueva contraseña debe tener al menos 8 caracteres');
         return;
     }
 
-    // Validate password confirmation
+    // Validar confirmación de contraseña
     if (newPassword !== confirmPassword) {
         alert('Las contraseñas no coinciden');
         return;
     }
 
-    // Placeholder for changing password
-    // In a real implementation, this would send a request to the backend
+    // Marcador de posición para cambiar contraseña
+    // En una implementación real, esto enviaría una solicitud al backend
     alert('Contraseña cambiada exitosamente');
 
-    // Clear form
+    // Limpiar formulario
     document.getElementById('security-form').reset();
 }
 
@@ -133,24 +133,24 @@ function saveNotificationSettings() {
     const formData = new FormData(document.getElementById('notifications-form'));
     const data = Object.fromEntries(formData);
 
-    // Placeholder for saving notification settings
-    // In a real implementation, this would send a request to the backend
+    // Marcador de posición para guardar configuración de notificaciones
+    // En una implementación real, esto enviaría una solicitud al backend
     alert('Configuración de notificaciones guardada exitosamente');
 }
 
 function logout() {
-    // Clear user data
+    // Limpiar datos del usuario
     localStorage.removeItem('userName');
     localStorage.removeItem('userToken');
     localStorage.removeItem('selectedFlight');
     localStorage.removeItem('checkInBooking');
     localStorage.removeItem('selectedSeat');
 
-    // Redirect to login page
+    // Redirigir a la página de login
     window.location.href = 'login.html';
 }
 
-// Add profile-specific styles dynamically
+// Agregar estilos específicos de perfil dinámicamente
 const profileStyles = `
     .profile-grid {
         display: grid;
