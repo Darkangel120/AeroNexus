@@ -125,12 +125,6 @@ function loadUpcomingFlights() {
     // For now, the HTML already has sample data
 }
 
-function loadNotifications() {
-    // Marcador de posición para cargar notificaciones
-    // In a real implementation, this would fetch from an API
-    // For now, the HTML already has sample data
-}
-
 function logout() {
     // Limpiar datos del usuario
     localStorage.removeItem('userName');
