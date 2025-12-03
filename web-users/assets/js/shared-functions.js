@@ -96,7 +96,10 @@ function scrollToSection(sectionId) {
 function showLoading(elementId) {
     const element = document.getElementById(elementId);
     if (element) {
-        element.innerHTML = '<div class="loading">Cargando...</div>';
+        // Preserve existing structure and add loading overlay
+        const existingContent = element.innerHTML;
+        element.innerHTML = '<div class="loading">Cargando...</div>' + existingContent;
+        element.style.display = 'block';
     }
 }
 

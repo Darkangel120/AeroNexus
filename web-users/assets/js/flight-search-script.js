@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeFlightSearch() {
-    // Cargar datos del usuario
-    loadUserData();
-
     // Configurar escuchadores de eventos
     setupEventListeners();
 
@@ -99,15 +96,40 @@ function displaySearchResults(searchParams) {
     // Filtrar vuelos predefinidos basados en parámetros de búsqueda
     const matchingFlights = getMatchingFlights(searchParams);
 
-    flightsContainer.innerHTML = '';
+    // Clear loading message and show results
+    if (resultsContainer) {
+        // Remove loading message by clearing and rebuilding content
+        resultsContainer.innerHTML = `
+            <h3>Resultados de Búsqueda</h3>
+            <div class="flights-container"></div>
+        `;
 
-    if (matchingFlights.length === 0) {
-        flightsContainer.innerHTML = '<p class="no-results">No se encontraron vuelos para los criterios de búsqueda especificados.</p>';
-    } else {
-        matchingFlights.forEach(flight => {
-            const flightCard = createFlightCard(flight);
-            flightsContainer.appendChild(flightCard);
-        });
+        const newFlightsContainer = resultsContainer.querySelector('.flights-container');
+
+        if (newFlightsContainer) {
+            if (matchingFlights.length === 0) {
+                // Mensaje específico basado en los criterios de búsqueda
+                const originCode = getAirportCode(searchParams.origin);
+                const destinationCode = getAirportCode(searchParams.destination);
+
+                let message = 'No se encontraron vuelos disponibles. ';
+
+                if (originCode === destinationCode) {
+                    message += 'El origen y destino no pueden ser el mismo.';
+                } else if (!isValidVenezuelanRoute(originCode, destinationCode)) {
+                    message += `La ruta ${originCode} - ${destinationCode} no está disponible en este momento.`;
+                } else {
+                    message += `No hay vuelos disponibles para la ruta ${originCode} - ${destinationCode} en la fecha ${searchParams.departureDate}.`;
+                }
+
+                newFlightsContainer.innerHTML = `<p class="no-results">${message}</p>`;
+            } else {
+                matchingFlights.forEach(flight => {
+                    const flightCard = createFlightCard(flight);
+                    newFlightsContainer.appendChild(flightCard);
+                });
+            }
+        }
     }
 
     resultsContainer.style.display = 'block';
@@ -120,7 +142,7 @@ const predefinedFlights = [
         id: 'CO101',
         origin: 'CCS',
         destination: 'MAR',
-        departureDate: '2024-12-15',
+        departureDate: '2025-12-15',
         departureTime: '08:00',
         arrivalTime: '09:30',
         duration: '1h 30m',
@@ -133,7 +155,7 @@ const predefinedFlights = [
         id: 'LA102',
         origin: 'CCS',
         destination: 'MAR',
-        departureDate: '2024-12-15',
+        departureDate: '2025-12-15',
         departureTime: '14:00',
         arrivalTime: '15:30',
         duration: '1h 30m',
@@ -146,7 +168,7 @@ const predefinedFlights = [
         id: 'ES103',
         origin: 'CCS',
         destination: 'VLN',
-        departureDate: '2024-12-15',
+        departureDate: '2025-12-15',
         departureTime: '10:00',
         arrivalTime: '10:45',
         duration: '45m',
@@ -159,7 +181,7 @@ const predefinedFlights = [
         id: 'CO104',
         origin: 'MAR',
         destination: 'CCS',
-        departureDate: '2024-12-15',
+        departureDate: '2025-12-15',
         departureTime: '16:00',
         arrivalTime: '17:30',
         duration: '1h 30m',
@@ -172,7 +194,7 @@ const predefinedFlights = [
         id: 'TU105',
         origin: 'CCS',
         destination: 'BRM',
-        departureDate: '2024-12-15',
+        departureDate: '2025-12-15',
         departureTime: '12:00',
         arrivalTime: '13:15',
         duration: '1h 15m',
@@ -185,7 +207,7 @@ const predefinedFlights = [
         id: 'RU106',
         origin: 'CCS',
         destination: 'PMV',
-        departureDate: '2024-12-15',
+        departureDate: '2025-12-15',
         departureTime: '09:00',
         arrivalTime: '10:45',
         duration: '1h 45m',
@@ -211,7 +233,7 @@ const predefinedFlights = [
         id: 'VE108',
         origin: 'CCS',
         destination: 'MUN',
-        departureDate: '2024-12-15',
+        departureDate: '2025-12-15',
         departureTime: '11:00',
         arrivalTime: '12:30',
         duration: '1h 30m',
@@ -223,15 +245,21 @@ const predefinedFlights = [
 ];
 
 function getMatchingFlights(searchParams) {
-    // Filtrar vuelos que coincidan con origen, destino y fecha
+    // Filtrar vuelos que coincidan con origen y destino (ignorar fecha para demo)
     const originCode = getAirportCode(searchParams.origin);
     const destinationCode = getAirportCode(searchParams.destination);
 
     return predefinedFlights.filter(flight => {
         return flight.origin === originCode &&
-               flight.destination === destinationCode &&
-               flight.departureDate === searchParams.departureDate;
+               flight.destination === destinationCode;
     }).sort((a, b) => a.price - b.price);
+}
+
+function isValidVenezuelanRoute(originCode, destinationCode) {
+    // Verificar si existe al menos un vuelo para esta ruta en los vuelos predefinidos
+    return predefinedFlights.some(flight =>
+        flight.origin === originCode && flight.destination === destinationCode
+    );
 }
 
 function getAirportCode(cityName) {
