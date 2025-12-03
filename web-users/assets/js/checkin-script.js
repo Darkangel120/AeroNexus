@@ -120,11 +120,11 @@ function searchBooking() {
         const mockBooking = {
             code: bookingCode,
             passenger: `${lastName}, Juan`,
-            flight: 'AN123',
-            origin: 'MEX',
-            destination: 'CDG',
+            flight: 'CO101',
+            origin: 'CCS',
+            destination: 'MAR',
             date: '15 Dic 2024',
-            time: '14:30',
+            time: '08:00',
             passengers: 1
         };
 
@@ -406,11 +406,11 @@ class CheckInManager {
             this.bookingData = {
                 code: bookingCode,
                 passenger: `${lastName}, Juan`,
-                flight: 'AN123',
-                origin: 'MEX',
-                destination: 'CDG',
+                flight: 'CO101',
+                origin: 'CCS',
+                destination: 'MAR',
                 date: '15 Dic 2024',
-                time: '14:30',
+                time: '08:00',
                 passengers: 1
             };
 

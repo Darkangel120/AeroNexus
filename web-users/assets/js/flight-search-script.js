@@ -1,4 +1,4 @@
-// Script de Búsqueda de Vuelos para el Portal de Usuarios de AeroNexus
+// Script de Búsqueda de Vuelos para el Portal de Usuarios de TravelNexus
 
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar búsqueda de vuelos
@@ -96,15 +96,15 @@ function displaySearchResults(searchParams) {
     const resultsContainer = document.getElementById('search-results');
     const flightsContainer = resultsContainer.querySelector('.flights-container');
 
-    // Datos de vuelo simulados
-    const mockFlights = generateMockFlights(searchParams);
+    // Filtrar vuelos predefinidos basados en parámetros de búsqueda
+    const matchingFlights = getMatchingFlights(searchParams);
 
     flightsContainer.innerHTML = '';
 
-    if (mockFlights.length === 0) {
+    if (matchingFlights.length === 0) {
         flightsContainer.innerHTML = '<p class="no-results">No se encontraron vuelos para los criterios de búsqueda especificados.</p>';
     } else {
-        mockFlights.forEach(flight => {
+        matchingFlights.forEach(flight => {
             const flightCard = createFlightCard(flight);
             flightsContainer.appendChild(flightCard);
         });
@@ -114,36 +114,148 @@ function displaySearchResults(searchParams) {
     scrollToSection('search-results');
 }
 
-function generateMockFlights(searchParams) {
-    // Generar datos de vuelo simulados basados en parámetros de búsqueda
-    const flights = [];
-    const numFlights = Math.floor(Math.random() * 5) + 3; // 3-7 vuelos
-
-    for (let i = 0; i < numFlights; i++) {
-        const departureTime = new Date(searchParams.departureDate);
-        departureTime.setHours(6 + Math.floor(Math.random() * 14), Math.floor(Math.random() * 60)); // 6 AM a 8 PM
-
-        const duration = 2 + Math.floor(Math.random() * 12); // 2-14 horas
-        const arrivalTime = new Date(departureTime.getTime() + duration * 60 * 60 * 1000);
-
-        const price = 150 + Math.floor(Math.random() * 850); // $150-$1000
-
-        flights.push({
-            id: `AN${100 + i}`,
-            origin: searchParams.origin.toUpperCase(),
-            destination: searchParams.destination.toUpperCase(),
-            departureDate: searchParams.departureDate,
-            departureTime: departureTime.toTimeString().substring(0, 5),
-            arrivalTime: arrivalTime.toTimeString().substring(0, 5),
-            duration: `${duration}h ${Math.floor(Math.random() * 60)}m`,
-            price: price,
-            airline: 'AeroNexus',
-            stops: Math.random() > 0.7 ? 1 : 0,
-            class: searchParams.flightClass
-        });
+// Vuelos predefinidos venezolanos
+const predefinedFlights = [
+    {
+        id: 'CO101',
+        origin: 'CCS',
+        destination: 'MAR',
+        departureDate: '2024-12-15',
+        departureTime: '08:00',
+        arrivalTime: '09:30',
+        duration: '1h 30m',
+        price: 85,
+        airline: 'Conviasa',
+        stops: 0,
+        class: 'economy'
+    },
+    {
+        id: 'LA102',
+        origin: 'CCS',
+        destination: 'MAR',
+        departureDate: '2024-12-15',
+        departureTime: '14:00',
+        arrivalTime: '15:30',
+        duration: '1h 30m',
+        price: 95,
+        airline: 'Laser Airlines',
+        stops: 0,
+        class: 'economy'
+    },
+    {
+        id: 'ES103',
+        origin: 'CCS',
+        destination: 'VLN',
+        departureDate: '2024-12-15',
+        departureTime: '10:00',
+        arrivalTime: '10:45',
+        duration: '45m',
+        price: 65,
+        airline: 'Estelar',
+        stops: 0,
+        class: 'economy'
+    },
+    {
+        id: 'CO104',
+        origin: 'MAR',
+        destination: 'CCS',
+        departureDate: '2024-12-15',
+        departureTime: '16:00',
+        arrivalTime: '17:30',
+        duration: '1h 30m',
+        price: 90,
+        airline: 'Conviasa',
+        stops: 0,
+        class: 'economy'
+    },
+    {
+        id: 'TU105',
+        origin: 'CCS',
+        destination: 'BRM',
+        departureDate: '2024-12-15',
+        departureTime: '12:00',
+        arrivalTime: '13:15',
+        duration: '1h 15m',
+        price: 75,
+        airline: 'Turpial Airlines',
+        stops: 0,
+        class: 'economy'
+    },
+    {
+        id: 'RU106',
+        origin: 'CCS',
+        destination: 'PMV',
+        departureDate: '2024-12-15',
+        departureTime: '09:00',
+        arrivalTime: '10:45',
+        duration: '1h 45m',
+        price: 110,
+        airline: 'RUTACA Airlines',
+        stops: 0,
+        class: 'economy'
+    },
+    {
+        id: 'AV107',
+        origin: 'VLN',
+        destination: 'CCS',
+        departureDate: '2025-12-15',
+        departureTime: '18:00',
+        arrivalTime: '18:45',
+        duration: '45m',
+        price: 70,
+        airline: 'Avior Airlines',
+        stops: 0,
+        class: 'economy'
+    },
+    {
+        id: 'VE108',
+        origin: 'CCS',
+        destination: 'MUN',
+        departureDate: '2024-12-15',
+        departureTime: '11:00',
+        arrivalTime: '12:30',
+        duration: '1h 30m',
+        price: 95,
+        airline: 'Venezolana',
+        stops: 0,
+        class: 'economy'
     }
+];
 
-    return flights.sort((a, b) => a.price - b.price);
+function getMatchingFlights(searchParams) {
+    // Filtrar vuelos que coincidan con origen, destino y fecha
+    const originCode = getAirportCode(searchParams.origin);
+    const destinationCode = getAirportCode(searchParams.destination);
+
+    return predefinedFlights.filter(flight => {
+        return flight.origin === originCode &&
+               flight.destination === destinationCode &&
+               flight.departureDate === searchParams.departureDate;
+    }).sort((a, b) => a.price - b.price);
+}
+
+function getAirportCode(cityName) {
+    // Mapa de ciudades a códigos IATA venezolanos
+    const cityToCode = {
+        'caracas': 'CCS',
+        'maracaibo': 'MAR',
+        'valencia': 'VLN',
+        'barquisimeto': 'BRM',
+        'puerto ordaz': 'PZO',
+        'ciudad bolívar': 'CBL',
+        'mérida': 'MRD',
+        'san antonio del táchira': 'SVZ',
+        'barcelona': 'BLA',
+        'maturín': 'MUN',
+        'cumaná': 'CUM',
+        'porlamar': 'PMV',
+        'puerto cabello': 'PBL',
+        'guanare': 'GUQ',
+        'tumeremo': 'TMO'
+    };
+
+    const normalizedCity = cityName.toLowerCase().trim();
+    return cityToCode[normalizedCity] || cityName.toUpperCase();
 }
 
 function createFlightCard(flight) {
