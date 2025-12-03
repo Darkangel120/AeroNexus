@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initializeCheckIn() {
-    // Cargar datos del usuario
-    loadUserData();
-
     // Configurar escuchadores de eventos
     setupEventListeners();
 
@@ -19,16 +16,6 @@ function initializeCheckIn() {
         if (codeInput) codeInput.value = checkInBooking;
         localStorage.removeItem('checkInBooking');
     }
-}
-
-function loadUserData() {
-    // Marcador de posición para cargar datos del usuario desde el backend
-    const userName = localStorage.getItem('userName') || 'Oswaldo Gómez';
-    const userNameEl = document.getElementById('user-name');
-    if (userNameEl) userNameEl.textContent = userName;
-
-    const userGreeting = document.getElementById('user-greeting');
-    if (userGreeting) userGreeting.textContent = userName;
 }
 
 function setupEventListeners() {
@@ -256,18 +243,6 @@ function completeCheckIn() {
 function downloadBoardingPass() {
     // En una implementación real, esto generaría un PDF o imagen
     alert('Descargando tarjeta de embarque...');
-}
-
-function logout() {
-    // Limpiar datos del usuario
-    localStorage.removeItem('userName');
-    localStorage.removeItem('userToken');
-    localStorage.removeItem('selectedFlight');
-    localStorage.removeItem('checkInBooking');
-    localStorage.removeItem('selectedSeat');
-
-    // Redirigir a la página de login
-    window.location.href = 'login.html';
 }
 
 // Funciones de utilidad
