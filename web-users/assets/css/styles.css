@@ -102,9 +102,18 @@ html, body {
 
 /* Hero Section */
 #hero {
-    background: linear-gradient(135deg, #1069de 0%, #1e3a8a 50%, #3b82f6 100%);
-    padding: 120px 0 80px;
+    background:
+        linear-gradient(135deg, rgba(16, 105, 222, 0.8) 0%, rgba(30, 58, 138, 0.85) 50%, rgba(59, 130, 246, 0.8) 100%),
+        url('../Venezuela.png') center/contain no-repeat;
+    background-size: auto, 60% 85%;
+    padding: 90px 0 80px;
     text-align: center;
+    position: relative;
+}
+
+.hero-container {
+    position: relative;
+    z-index: 2;
 }
 
 .hero-container {

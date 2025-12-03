@@ -1,8 +1,8 @@
-// Script de Funciones Compartidas para AeroNexus
+// Script de Funciones Compartidas para TravelNexus
 
 class UserMenuManager {
     constructor() {
-        this.userName = localStorage.getItem('userName') || 'Usuario';
+        this.userName = localStorage.getItem('userName') || 'Oswaldo Gómez';
         this.setupUserMenu();
     }
 
@@ -81,7 +81,7 @@ class UserMenuManager {
 // Funciones compartidas
 function loadUserData() {
     // Placeholder for loading user data from backend
-    const userName = localStorage.getItem('userName') || 'Usuario';
+    const userName = localStorage.getItem('userName') || 'Oswaldo Gómez';
     document.getElementById('user-name').textContent = userName;
     document.getElementById('user-greeting').textContent = userName;
 }

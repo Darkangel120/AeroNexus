@@ -1,4 +1,4 @@
-// Script de Notificaciones para AeroNexus
+// Script de Notificaciones para TravelNexus
 
 document.addEventListener('DOMContentLoaded', function() {
     initializeNotifications();

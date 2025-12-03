@@ -1,4 +1,4 @@
-// Script de Perfil para el Portal de Usuarios de AeroNexus
+// Script de Perfil para el Portal de Usuarios de TravelNexus
 
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar página de perfil

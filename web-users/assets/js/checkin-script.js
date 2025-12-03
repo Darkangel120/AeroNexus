@@ -1,4 +1,4 @@
-// Script de Check-in para el Portal de Usuarios de AeroNexus
+// Script de Check-in para el Portal de Usuarios de TravelNexus
 
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar página de check-in
@@ -23,7 +23,7 @@ function initializeCheckIn() {
 
 function loadUserData() {
     // Marcador de posición para cargar datos del usuario desde el backend
-    const userName = localStorage.getItem('userName') || 'Usuario';
+    const userName = localStorage.getItem('userName') || 'Oswaldo Gómez';
     const userNameEl = document.getElementById('user-name');
     if (userNameEl) userNameEl.textContent = userName;
 

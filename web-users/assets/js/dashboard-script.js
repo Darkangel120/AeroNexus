@@ -1,4 +1,4 @@
-// Script de Dashboard para el Portal de Usuarios de AeroNexus
+// Script de Dashboard para el Portal de Usuarios de TravelNexus
 
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar dashboard
