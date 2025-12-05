@@ -46,9 +46,15 @@
     <main>
         <section id="bookings">
             <div class="container">
-                <h2>Mis Reservas</h2>
+                <h2 id="bookings-title">Mis Reservas</h2>
 
-                <div class="booking-tabs">
+                <div class="booking-actions" style=" width: 20px;">
+                    <button class="btn-primary" id="create-reservation-btn">
+                        <i class="fas fa-plus"></i> Crear Nueva Reserva
+                    </button>
+                </div>
+
+                <div class="booking-tabs" id="booking-tabs">
                     <button class="tab-btn active" data-tab="upcoming">Próximas</button>
                     <button class="tab-btn" data-tab="past">Pasadas</button>
                     <button class="tab-btn" data-tab="cancelled">Canceladas</button>
@@ -71,10 +77,90 @@
                         <!-- Las reservas se cargarán dinámicamente desde JavaScript -->
                     </div>
                 </div>
+
+                <!-- Sección para crear nueva reserva -->
+                <div id="create-reservation-section" class="booking-section" style="display: none;">
+                    <div class="reservation-creation-container">
+                        <div class="reservation-header">
+                            <h3>Crear Nueva Reserva</h3>
+                            <button class="btn-secondary back-to-bookings" id="back-to-bookings">
+                                <i class="fas fa-arrow-left"></i> Volver a Mis Reservas
+                            </button>
+                        </div>
+                        <form id="reservation-form">
+                            <div id="flight-selection-section">
+                                <h4>Buscar y Seleccionar Vuelo</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="modal-origin">Origen *</label>
+                                        <input type="text" id="modal-origin" name="modal-origin" placeholder="Ej: CCS" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal-destination">Destino *</label>
+                                        <input type="text" id="modal-destination" name="modal-destination" placeholder="Ej: MAR" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="modal-departure-date">Fecha de Salida *</label>
+                                        <input type="date" id="modal-departure-date" name="modal-departure-date" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="modal-passengers">Pasajeros</label>
+                                        <select id="modal-passengers" name="modal-passengers">
+                                            <option value="1">1 Pasajero</option>
+                                            <option value="2">2 Pasajeros</option>
+                                            <option value="3">3 Pasajeros</option>
+                                            <option value="4">4 Pasajeros</option>
+                                            <option value="5">5+ Pasajeros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-secondary" id="search-flights-btn">
+                                    <i class="fas fa-search"></i> Buscar Vuelos
+                                </button>
+                                <p style="margin-top: 1rem; text-align: center;">
+                                    <a href="#" id="switch-to-validation" style="color: #007bff; text-decoration: none;">¿Prefieres validar un número de vuelo específico?</a>
+                                </p>
+                                <div id="flight-results" style="margin-top: 1.5rem; display: none;"></div>
+                            </div>
+
+                            <div id="flight-validation-section" style="display: none;">
+                                <h4>Validar Vuelo</h4>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="modal-flight-number">Número de Vuelo *</label>
+                                        <input type="text" id="modal-flight-number" name="modal-flight-number" placeholder="Ej: TN123" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="validation-passengers">Pasajeros</label>
+                                        <select id="validation-passengers" name="validation-passengers">
+                                            <option value="1">1 Pasajero</option>
+                                            <option value="2">2 Pasajeros</option>
+                                            <option value="3">3 Pasajeros</option>
+                                            <option value="4">4 Pasajeros</option>
+                                            <option value="5">5+ Pasajeros</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-secondary" id="validate-flight-btn">
+                                    <i class="fas fa-check"></i> Procesar Reserva
+                                </button>
+                                <div id="flight-validation-message" style="margin-top: 1rem; display: none;"></div>
+                            </div>
+
+                            <div id="passenger-details-section" style="display: none;">
+                                <h4>Detalles de Pasajeros y Pago</h4>
+                                <div id="passenger-forms">
+                                    <!-- Formularios de pasajeros y pago se generarán dinámicamente -->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
-
     <footer id="dashboard-footer">
         <div class="footer-container">
             <div class="footer-logo">

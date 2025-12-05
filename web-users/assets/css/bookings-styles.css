@@ -12,13 +12,25 @@
 
 .booking-tabs {
     display: flex;
-    margin-bottom: 2rem;
+    margin-bottom: 1.2rem;
     border-bottom: 2px solid #e9ecef;
     background: var(--white);
     border-radius: 10px 10px 0 0;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
     animation: fadeInUp 0.8s ease-out;
+}
+
+.booking-actions {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.booking-actions .btn-primary {
+    min-width: 250px;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
 }
 
 .tab-btn {
@@ -53,6 +65,12 @@
 
 .booking-section.active {
     display: block;
+}
+
+/* Hide booking tabs and sections when creating reservation */
+#create-reservation-section.active ~ .booking-tabs,
+#create-reservation-section.active ~ .booking-section {
+    display: none;
 }
 
 @keyframes fadeIn {
@@ -292,5 +310,185 @@
 
     .booking-card {
         padding: 1.5rem;
+    }
+}
+
+/* Estilos para la creación de reservas */
+
+/* Modal overlay */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal content */
+.modal-content {
+    background: var(--white);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Modal header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid #e9ecef;
+    background: var(--light-bg);
+    border-radius: 15px 15px 0 0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.close-modal {
+    font-size: 2rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: var(--primary-green);
+}
+
+/* Modal body */
+.modal-body {
+    padding: 2rem;
+}
+
+/* Form styles */
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.75rem;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+/* Section headers */
+#flight-selection-section h4,
+#passenger-details-section h4 {
+    margin-bottom: 1.5rem;
+    color: var(--primary-green);
+    font-size: 1.25rem;
+    font-weight: 600;
+    border-bottom: 2px solid var(--accent-orange);
+    padding-bottom: 0.5rem;
+}
+
+/* Flight results */
+.flight-results {
+    margin-top: 1.5rem;
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    background: var(--light-bg);
+}
+
+/* Passenger forms */
+#passenger-forms {
+    margin-bottom: 2rem;
+}
+
+/* Form actions */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.form-actions button {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Responsive adjustments for modal */
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .modal-header,
+    .modal-body {
+        padding: 1rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .form-actions button {
+        margin-bottom: 0.5rem;
     }
 }

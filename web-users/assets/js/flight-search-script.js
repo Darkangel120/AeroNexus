@@ -325,11 +325,13 @@ function createFlightCard(flight) {
 }
 
 function selectFlight(flight) {
-    // Almacenar vuelo seleccionado en localStorage o sesión
+    // Almacenar vuelo seleccionado en localStorage
     localStorage.setItem('selectedFlight', JSON.stringify(flight));
 
-    // Redirigir a página de reservas o mostrar modal de reservas
-    alert(`Vuelo ${flight.id} seleccionado. Redirigiendo a la página de reservas...`);
+    // Indicar que se debe abrir la sección de creación de reserva al cargar
+    localStorage.setItem('openModalOnLoad', 'true');
+
+    // Redirigir a página de reservas
     window.location.href = 'bookings.html';
 }
 
