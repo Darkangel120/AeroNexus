@@ -1,5 +1,15 @@
 /* Estilos específicos para Reservas */
 
+:root {
+    --primary-green: #28a745;
+    --accent-orange: #fd7e14;
+    --light-bg: #f8f9fa;
+    --white: #fff;
+    --text-dark: #333;
+    --text-light: #666;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
 .booking-tabs {
     display: flex;
     margin-bottom: 2rem;
@@ -7,7 +17,8 @@
     background: var(--white);
     border-radius: 10px 10px 0 0;
     overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .tab-btn {
@@ -25,14 +36,14 @@
 }
 
 .tab-btn.active {
-    color: var(--primary-blue);
-    border-bottom-color: var(--primary-blue);
-    background: rgba(56, 217, 231, 0.1);
+    color: var(--primary-green);
+    border-bottom-color: var(--primary-green);
+    background: rgba(40, 167, 69, 0.1);
 }
 
 .tab-btn:hover {
-    color: var(--primary-blue);
-    background: rgba(56, 217, 231, 0.05);
+    color: var(--primary-green);
+    background: rgba(40, 167, 69, 0.05);
 }
 
 .booking-section {
@@ -64,9 +75,9 @@
     background: var(--white);
     border-radius: 15px;
     padding: 2rem;
-    box-shadow: 0 5px 15px var(--shadow);
-    border-left: 5px solid var(--primary-blue);
-    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
+    border-left: 5px solid var(--primary-green);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
 }
@@ -78,12 +89,12 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--accent-orange) 100%);
 }
 
 .booking-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px var(--shadow);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .booking-card.completed {
@@ -108,11 +119,11 @@
     gap: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--primary-blue);
+    color: var(--primary-green);
 }
 
 .booking-route i {
-    color: var(--accent-teal);
+    color: var(--accent-orange);
     animation: pulse 2s infinite;
 }
 
@@ -189,25 +200,25 @@
 }
 
 .btn-primary {
-    background: var(--primary-blue);
+    background: var(--primary-green);
     color: var(--white);
     border: none;
 }
 
 .btn-primary:hover {
-    background: #1e3a8a;
+    background: #1e7e34;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .btn-secondary {
     background: var(--white);
-    color: var(--primary-blue);
-    border: 2px solid var(--primary-blue);
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
 }
 
 .btn-secondary:hover {
-    background: var(--primary-blue);
+    background: var(--primary-green);
     color: var(--white);
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -253,7 +264,7 @@
     }
 
     .tab-btn.active {
-        border-right-color: var(--primary-blue);
+        border-right-color: var(--primary-green);
         border-bottom-color: transparent;
     }
 

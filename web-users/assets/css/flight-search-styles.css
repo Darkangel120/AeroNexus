@@ -22,7 +22,7 @@
 .price {
     font-size: 1.8rem;
     font-weight: bold;
-    color: var(--primary-blue);
+    color: var(--primary-green);
     display: block;
 }
 
@@ -84,14 +84,14 @@
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 3px rgba(3, 86, 191, 0.1);
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
 }
 
 .btn-primary {
     width: 100%;
     padding: 0.875rem;
-    background: var(--primary-blue);
+    background: var(--primary-green);
     color: var(--white);
     border: none;
     border-radius: 8px;
@@ -103,7 +103,7 @@
 }
 
 .btn-primary:hover {
-    background: #024aa0;
+    background: #1e7e34;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(3, 86, 191, 0.3);
+    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
 }

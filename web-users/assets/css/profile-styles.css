@@ -1,5 +1,15 @@
 /* Estilos específicos para Perfil */
 
+:root {
+    --primary-green: #28a745;
+    --accent-orange: #fd7e14;
+    --light-bg: #f8f9fa;
+    --white: #fff;
+    --text-dark: #333;
+    --text-light: #666;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
 .profile-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -31,7 +41,7 @@
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--accent-orange) 100%);
 }
 
 .profile-card:hover {
@@ -50,13 +60,13 @@
 
 .profile-avatar {
     font-size: 4rem;
-    color: var(--primary-blue);
+    color: rgb(194, 192, 192);
     transition: all 0.3s ease;
 }
 
 .profile-avatar:hover {
     transform: scale(1.1);
-    color: var(--accent-teal);
+    color: var(--accent-orange);
 }
 
 .profile-details h3 {
@@ -72,7 +82,7 @@
 .member-status {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background: linear-gradient(90deg, var(--primary-blue) 0%, #38D9E7 100%);
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--accent-orange) 100%);
     color: var(--white);
     border-radius: 15px;
     font-size: 0.8rem;
@@ -112,13 +122,13 @@
 .form-group input:focus,
 .form-group select:focus {
     outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 3px rgba(56, 217, 231, 0.1);
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
 }
 
 .btn-primary {
     padding: 0.75rem 2rem;
-    background: var(--primary-blue);
+    background: var(--primary-green);
     color: var(--white);
     border: none;
     border-radius: 8px;
@@ -130,7 +140,7 @@
 }
 
 .btn-primary:hover {
-    background: #1e3a8a;
+    background: #1e7e34;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
@@ -153,7 +163,7 @@
 .form-check input[type="checkbox"] {
     width: 18px;
     height: 18px;
-    accent-color: var(--primary-blue);
+    accent-color: var(--primary-green);
 }
 
 .form-check label {
@@ -167,12 +177,12 @@
     margin-bottom: 1.5rem;
     color: var(--text-dark);
     font-size: 1.25rem;
-    border-bottom: 2px solid var(--primary-blue);
+    border-bottom: 2px solid var(--primary-green);
     padding-bottom: 0.5rem;
 }
 
 .profile-info-section .profile-card:first-child {
-    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3a8a 50%, #3b82f6 100%);
+    background: linear-gradient(135deg, var(--primary-green) 0%, #1e7e34 50%, #28a745 100%);
     color: var(--white);
 }
 

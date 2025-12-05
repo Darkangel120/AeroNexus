@@ -22,8 +22,8 @@ body {
 
 /* Variables de colores para el dashboard */
 :root {
-    --primary-blue: #1069de;
-    --accent-teal: #20c997;
+    --primary-green: #28a745;
+    --accent-orange: #fd7e14;
     --light-bg: #f8f9fa;
     --white: #fff;
     --text-dark: #333;
@@ -36,7 +36,7 @@ body {
 
 /* Header del Dashboard */
 #dashboard-header {
-    background: linear-gradient(90deg, var(--primary-blue) 0%, #38D9E7 100%);
+    background: linear-gradient(90deg, var(--primary-green) 0%, var(--accent-orange) 100%);
     color: var(--white);
     padding: 1rem 0;
     position: fixed;
@@ -152,7 +152,7 @@ main {
 /* Welcome Section */
 #welcome {
     padding: 20px 0;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, #1e3a8a 50%, #3b82f6 100%);
+    background: var(--primary-green);
     color: var(--white);
 }
 
@@ -213,20 +213,20 @@ main {
     border-radius: 15px;
     padding: 1rem;
     text-align: center;
-    box-shadow: 0 5px 15px var(--shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 }
 
 .action-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .action-icon {
     font-size: 2rem;
     margin-bottom: 0.5rem;
-    color: var(--primary-blue);
+    color: var(--primary-green);
 }
 
 .action-card h3 {
@@ -262,11 +262,17 @@ main {
     background: var(--white);
     border-radius: 15px;
     padding: 2rem;
-    box-shadow: 0 5px 15px var(--shadow);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 4px 16px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.flight-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .flight-info {
@@ -282,11 +288,11 @@ main {
     gap: 1rem;
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--primary-blue);
+    color: var(--primary-green);
 }
 
 .flight-route i {
-    color: var(--accent-teal);
+    color: var(--accent-orange);
 }
 
 .flight-details p {
@@ -325,7 +331,7 @@ main {
 
 .btn-secondary {
     padding: 0.5rem 1rem;
-    background: var(--accent-teal);
+    background: var(--accent-orange);
     color: var(--white);
     border: none;
     border-radius: 5px;
@@ -335,13 +341,13 @@ main {
 }
 
 .btn-secondary:hover {
-    background: #17a2b8;
+    background: #e8680f;
     transform: translateY(-2px);
 }
 
 .btn-primary {
     padding: 0.75rem 1.5rem;
-    background: var(--primary-blue);
+    background: var(--primary-green);
     color: var(--white);
     border: none;
     border-radius: 5px;
@@ -352,9 +358,9 @@ main {
 }
 
 .btn-primary:hover {
-    background: #0a4a8a;
+    background: #1e7e34;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(16, 105, 222, 0.3);
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
 }
 
 .btn-primary:disabled {
@@ -396,8 +402,8 @@ main {
 .form-group select:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: var(--primary-blue);
-    box-shadow: 0 0 0 3px rgba(16, 105, 222, 0.1);
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
 }
 
 
