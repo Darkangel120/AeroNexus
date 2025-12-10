@@ -9,21 +9,21 @@ html, body {
     height: 100%;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
 }
 
 /* Variables de colores para la página principal */
 :root {
-    --primary-green: #28a745;
-    --accent-orange: #fd7e14;
-    --light-bg: #f8f9fa;
-    --white: #fff;
-    --text-dark: #333;
-    --text-light: #666;
-    --shadow: rgba(0, 0, 0, 0.1);
-    --glass-bg: rgba(255, 255, 255, 0.25);
-    --glass-border: rgba(255, 255, 255, 0.18);
+    --primary-green: #5D3A8C; /* Púrpura Eclipse */
+    --accent-orange: #B28CFF; /* Lavanda Digital */
+    --light-bg: #F8F8FA; /* Blanco Astral */
+    --white: #F8F8FA; /* Blanco Astral */
+    --text-dark: #4A4A52; /* Gris Grafito */
+    --text-light: #C5C5CD; /* Gris Nube Metálica */
+    --shadow: rgba(74, 74, 82, 0.1); /* Gris Grafito */
+    --glass-bg: rgba(248, 248, 250, 0.25); /* Blanco Astral */
+    --glass-border: rgba(248, 248, 250, 0.18); /* Blanco Astral */
 }
 
 /* Header */
@@ -89,24 +89,24 @@ html, body {
 }
 
 .main-nav a:hover {
-    color: #28c1cf;
+    color: var(--accent-orange);
 }
 
 .main-btn-user{
-    border: #e9ecef 2px solid;
+    border: var(--text-light) 2px solid;
     border-radius: 20px;
     padding: 5px 15px;
 }
 .main-btn-user:hover{
-    background-color: #e9ecef;
+    background-color: var(--text-light);
     transition: background-color 0.3s ease;
 }
 
 /* Hero Section */
 #hero {
     background:
-        linear-gradient(135deg, rgba(40, 167, 69, 0.8) 0%, rgba(253, 126, 20, 0.8) 100%),
-        url('../Venezuela.png') center/contain no-repeat;
+        linear-gradient(135deg, rgba(93, 58, 140, 0.8) 0%, rgba(178, 140, 255, 0.85) 50%, rgba(93, 58, 140, 0.8) 100%),
+        url('./Venezuela.png') center/contain no-repeat;
     background-size: auto, 60% 85%;
     padding: 90px 0 80px;
     text-align: center;
@@ -172,9 +172,9 @@ html, body {
 }
 
 .btn-secondary:hover {
-    background: #e8680f;
+    background: #8a5cff;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(253, 126, 20, 0.3);
+    box-shadow: 0 4px 15px rgba(178, 140, 255, 0.3);
 }
 
 /* Services Section */
@@ -263,7 +263,7 @@ html, body {
 /* Hours Section */
 #hours {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--text-light) 100%);
 }
 
 #hours h2 {
@@ -328,7 +328,7 @@ html, body {
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(248, 248, 250, 0.8);
     border-radius: 10px;
     border-left: 5px solid var(--primary-green);
 }
@@ -340,7 +340,7 @@ html, body {
 
 /* Footer */
 #main-footer {
-    background: linear-gradient(90deg, #343a40 0%, #495057 100%);
+    background: linear-gradient(90deg, var(--text-dark) 0%, #5a5a62 100%);
     color: var(--white);
     padding: 2rem 0;
     text-align: center;
@@ -376,7 +376,7 @@ html, body {
 /* Login/Register Forms */
 #login-section, #register-section {
     padding: 120px 0 80px;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--text-light) 100%);
     min-height: calc(100vh - 140px);
     display: flex;
     align-items: center;
@@ -438,7 +438,7 @@ html, body {
 .form-group input {
     width: 100%;
     padding: 0.75rem;
-    border: 2px solid #e9ecef;
+    border: 2px solid var(--text-light);
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
@@ -448,7 +448,7 @@ html, body {
 .form-group input:focus {
     outline: none;
     border-color: var(--primary-green);
-    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+    box-shadow: 0 0 0 3px rgba(93, 58, 140, 0.1);
 }
 
 .form-options {
@@ -497,15 +497,15 @@ html, body {
 }
 
 .btn-primary:hover {
-    background: #1e7e34;
+    background: #4a2a6c;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+    box-shadow: 0 4px 15px rgba(93, 58, 140, 0.3);
 }
 
 .login-footer, .register-footer {
     padding: 1.5rem 2rem;
-    background: #f8f9fa;
-    border-top: 1px solid #e9ecef;
+    background: var(--light-bg);
+    border-top: 1px solid var(--text-light);
 }
 
 .login-footer p, .register-footer p {
@@ -563,7 +563,7 @@ html, body {
     padding: 2rem;
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.2);
+    box-shadow: 0 5px 15px rgba(216, 111, 69, 0.2);
     transition: transform 0.3s ease;
 }
 
@@ -660,7 +660,7 @@ html, body {
 /* Contact Section */
 #contact {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    background: linear-gradient(135deg, var(--light-bg) 0%, var(--text-light) 100%);
 }
 
 #contact h2 {
@@ -759,10 +759,10 @@ html, body {
 
 @keyframes glow {
     0%, 100% {
-        box-shadow: 0 0 20px rgba(40, 167, 69, 0.3);
+        box-shadow: 0 0 20px rgba(93, 58, 140, 0.3);
     }
     50% {
-        box-shadow: 0 0 30px rgba(40, 167, 69, 0.5);
+        box-shadow: 0 0 30px rgba(93, 58, 140, 0.5);
     }
 }
 
@@ -778,13 +778,13 @@ html, body {
 }
 
 .stat-card {
-    box-shadow: 0 8px 32px rgba(40, 167, 69, 0.3), 0 4px 16px rgba(40, 167, 69, 0.2);
+    box-shadow: 0 8px 32px rgba(178, 140, 255, 0.3), 0 4px 16px rgba(178, 140, 255, 0.2);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .stat-card:hover {
     transform: translateY(-8px) scale(1.05);
-    box-shadow: 0 20px 40px rgba(40, 167, 69, 0.4), 0 10px 20px rgba(40, 167, 69, 0.3);
+    box-shadow: 0 20px 40px rgba(178, 140, 255, 0.4), 0 10px 20px rgba(178, 140, 255, 0.3);
 }
 
 /* Staggered animations for cards */
