@@ -15,15 +15,15 @@ html, body {
 
 /* Variables de colores para la página principal */
 :root {
-    --primary-green: #5D3A8C; /* Púrpura Eclipse */
-    --accent-orange: #B28CFF; /* Lavanda Digital */
-    --light-bg: #F8F8FA; /* Blanco Astral */
-    --white: #F8F8FA; /* Blanco Astral */
-    --text-dark: #4A4A52; /* Gris Grafito */
-    --text-light: #C5C5CD; /* Gris Nube Metálica */
-    --shadow: rgba(74, 74, 82, 0.1); /* Gris Grafito */
-    --glass-bg: rgba(248, 248, 250, 0.25); /* Blanco Astral */
-    --glass-border: rgba(248, 248, 250, 0.18); /* Blanco Astral */
+    --primary-green: #5D3A8C;
+    --accent-orange: #B28CFF;
+    --light-bg: #F8F8FA;
+    --white: #F8F8FA;
+    --text-dark: #4A4A52;
+    --text-light: #C5C5CD;
+    --shadow: rgba(74, 74, 82, 0.1);
+    --glass-bg: rgba(248, 248, 250, 0.25);
+    --glass-border: rgba(248, 248, 250, 0.18);
 }
 
 /* Header */
